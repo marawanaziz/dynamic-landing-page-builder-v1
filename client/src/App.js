@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  useParams,
+} from "react-router-dom";
 import "./App.css";
 
 // Replace with your static logo asset
 import logo from "./logo.svg";
-
-function getIdFromUrl() {
-  const params = new URLSearchParams(window.location.search);
-  return params.get("id");
-}
 
 function getLoomEmbedUrl(url) {
   if (!url) return "";
@@ -17,11 +18,11 @@ function getLoomEmbedUrl(url) {
   return match ? `https://www.loom.com/embed/${match[1]}` : "";
 }
 
-function App() {
+function LandingPage() {
+  const { id } = useParams();
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const id = getIdFromUrl();
 
   useEffect(() => {
     if (!id) {
@@ -110,6 +111,16 @@ function App() {
         ></iframe>
       </div>
     </div>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/landing/:id" element={<LandingPage />} />
+      </Routes>
+    </Router>
   );
 }
 
