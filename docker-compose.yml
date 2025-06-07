@@ -1,0 +1,38 @@
+version: "3.8"
+
+services:
+  backend:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - DB_HOST=db
+      - DB_USER=root
+      - DB_PASSWORD=password
+      - DB_NAME=landing_pages
+    depends_on:
+      - db
+
+  frontend:
+    build: ./client
+    ports:
+      - "3001:3000"
+    environment:
+      - REACT_APP_API_URL=http://localhost:3000
+    depends_on:
+      - backend
+
+  db:
+    image: mysql:8.0
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=landing_pages
+    volumes:
+      - ./landing_pages.sql:/docker-entrypoint-initdb.d/landing_pages.sql
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  mysql_data:

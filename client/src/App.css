@@ -1,0 +1,137 @@
+:root {
+  --brand-color: #0057ff;
+  --text-color: #222;
+  --bg-color: #fff;
+  --header-font: "Segoe UI", "Helvetica Neue", Arial, "Liberation Sans",
+    sans-serif;
+}
+
+body,
+html,
+#root,
+.landing-page {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  background: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--header-font);
+}
+
+.landing-page {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 32px 16px 64px 16px;
+  box-sizing: border-box;
+}
+
+.dual-logo-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+  margin-bottom: 32px;
+}
+
+.main-logo,
+.partner-logo {
+  height: 56px;
+  max-width: 160px;
+  object-fit: contain;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  padding: 8px;
+}
+
+.primary-header {
+  font-size: 2.2rem;
+  font-weight: 700;
+  text-align: center;
+  margin: 24px 0 12px 0;
+  color: var(--brand-color);
+}
+
+.subheader {
+  font-size: 1.2rem;
+  text-align: center;
+  margin-bottom: 32px;
+  color: #444;
+}
+
+.loom-video {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 32px;
+}
+
+.features-header {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 32px 0 12px 0;
+  color: var(--brand-color);
+  text-align: center;
+}
+
+.features-list {
+  list-style: disc inside;
+  margin: 0 0 32px 0;
+  padding: 0 0 0 16px;
+  color: #333;
+  font-size: 1.05rem;
+}
+
+.features-list li {
+  margin-bottom: 8px;
+}
+
+.cta-header {
+  font-size: 1.25rem;
+  font-weight: 600;
+  text-align: center;
+  margin: 40px 0 16px 0;
+  color: var(--brand-color);
+}
+
+.calendly-embed {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.loader,
+.error {
+  text-align: center;
+  margin-top: 80px;
+  font-size: 1.2rem;
+  color: var(--brand-color);
+}
+
+@media (max-width: 600px) {
+  .landing-page {
+    padding: 12px 2vw 32px 2vw;
+  }
+  .dual-logo-header {
+    gap: 12px;
+  }
+  .main-logo,
+  .partner-logo {
+    height: 40px;
+    max-width: 100px;
+    padding: 4px;
+  }
+  .primary-header {
+    font-size: 1.3rem;
+  }
+  .features-header {
+    font-size: 1.1rem;
+  }
+  .cta-header {
+    font-size: 1.05rem;
+  }
+  .calendly-embed iframe,
+  .loom-video iframe {
+    min-height: 320px !important;
+    height: 40vw !important;
+  }
+}
