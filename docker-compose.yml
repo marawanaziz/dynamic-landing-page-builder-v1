@@ -1,7 +1,7 @@
 version: "3.8"
 
 services:
-  backend:
+  app:
     build: .
     ports:
       - "3000:3000"
@@ -13,15 +13,6 @@ services:
       - DB_NAME=landing_pages
     depends_on:
       - db
-
-  frontend:
-    build: ./client
-    ports:
-      - "3001:3000"
-    environment:
-      - REACT_APP_API_URL=http://localhost:3000
-    depends_on:
-      - backend
 
   db:
     image: mysql:8.0
