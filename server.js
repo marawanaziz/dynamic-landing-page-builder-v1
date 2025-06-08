@@ -20,9 +20,10 @@ app.get("/api/landing", async (req, res) => {
     return res.status(400).json({ error: "Missing id parameter" });
   }
   try {
-    const [rows] = await db.query("SELECT * FROM landing_pages WHERE id = ?", [
-      id,
-    ]);
+    const [rows] = await db.query(
+      "SELECT * FROM landing_pages WHERE landing_page_id = ?",
+      [id]
+    );
     if (rows.length === 0) {
       return res.status(404).json({ error: "Landing page not found" });
     }

@@ -30,7 +30,9 @@ function LandingPage() {
       setLoading(false);
       return;
     }
-    fetch(`/api/landing?id=${id}`)
+    // Use the current origin for the API request
+    const apiUrl = `${window.location.origin}/api/landing?id=${id}`;
+    fetch(apiUrl)
       .then((res) => {
         if (!res.ok) throw new Error("Landing page not found");
         return res.json();
