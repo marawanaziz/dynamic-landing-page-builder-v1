@@ -92,26 +92,28 @@ function LandingPage() {
       {/* Subheader */}
       <h2 className="subheader">{data.subheader}</h2>
 
-      {/* CTA Button */}
-      <button
-        className="cta-button"
-        onClick={scrollToCalendly}
-        style={{
-          backgroundColor: brandColor,
-          color: "white",
-          padding: "12px 24px",
-          border: "none",
-          borderRadius: "4px",
-          fontSize: "18px",
-          cursor: "pointer",
-          margin: "20px 0",
-          transition: "opacity 0.2s",
-        }}
-        onMouseOver={(e) => (e.target.style.opacity = "0.9")}
-        onMouseOut={(e) => (e.target.style.opacity = "1")}
-      >
-        Schedule a Call
-      </button>
+      {/* Centered CTA Button */}
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <button
+          className="cta-button"
+          onClick={scrollToCalendly}
+          style={{
+            backgroundColor: brandColor,
+            color: "#fff",
+            padding: "12px 24px",
+            border: "none",
+            borderRadius: "4px",
+            fontSize: "18px",
+            cursor: "pointer",
+            margin: "20px 0",
+            transition: "opacity 0.2s",
+          }}
+          onMouseOver={(e) => (e.target.style.opacity = "0.9")}
+          onMouseOut={(e) => (e.target.style.opacity = "1")}
+        >
+          Schedule a Call
+        </button>
+      </div>
 
       {/* Loom Video Embed */}
       {data.loom_url && (
@@ -123,7 +125,7 @@ function LandingPage() {
           }}
         >
           <iframe
-            src={getLoomEmbedUrl(data.loom_url)}
+            src={data.loom_url}
             frameBorder="0"
             webkitallowfullscreen="true"
             mozallowfullscreen="true"
@@ -135,6 +137,7 @@ function LandingPage() {
               width: "100%",
               height: "100%",
             }}
+            title="Loom Video"
           ></iframe>
         </div>
       )}
@@ -142,12 +145,15 @@ function LandingPage() {
       {/* Features Section Header */}
       <h3 className="features-header">Key Features</h3>
 
-      {/* Features List */}
-      <ul className="features-list">
+      {/* Features List as Cards */}
+      <div className="features-card-list">
         {features.map((feature, idx) => (
-          <li key={idx}>{feature}</li>
+          <div className="feature-card" key={idx}>
+            <div className="feature-icon">{idx + 1}</div>
+            <div className="feature-text">{feature}</div>
+          </div>
         ))}
-      </ul>
+      </div>
 
       {/* Call-to-Action Header */}
       <div className="cta-header">Ready to get started?</div>
