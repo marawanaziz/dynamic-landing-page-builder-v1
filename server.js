@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
+const path = require("path");
 const db = require("./db");
 
 dotenv.config();
@@ -8,6 +9,9 @@ dotenv.config();
 const app = express();
 app.use(cors());
 app.use(express.json());
+
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, "client/build")));
 
 // API endpoint to get landing page data by id
 app.get("/api/landing", async (req, res) => {
@@ -91,6 +95,12 @@ app.post("/api/landing", async (req, res) => {
     console.error(err);
     res.status(500).json({ error: "Internal server error" });
   }
+});
+
+// The "catchall" handler: for any request that doesn't
+// match one above, send back React's index.html file.
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client/build", "index.html"));
 });
 
 const PORT = process.env.PORT || 3000;
