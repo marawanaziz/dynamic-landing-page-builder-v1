@@ -13,10 +13,11 @@ const MAIN_LOGO_URL =
 
 function getLoomEmbedUrl(url) {
   if (!url) return "";
-  // Loom share URLs are like https://www.loom.com/share/VIDEO_ID
-  // Embed format: https://www.loom.com/embed/VIDEO_ID
-  const match = url.match(/loom.com\/(?:share|embed)\/([\w-]+)/);
-  return match ? `https://www.loom.com/embed/${match[1]}` : "";
+  // If it's already an embed URL, return as is
+  if (url.includes("/embed/")) return url;
+  // If it's a share URL, convert to embed URL
+  const match = url.match(/loom.com\/share\/([\w-]+)/);
+  return match ? `https://www.loom.com/embed/${match[1]}` : url;
 }
 
 function parseFeatures(featuresString) {
@@ -125,7 +126,7 @@ function LandingPage() {
           }}
         >
           <iframe
-            src={data.loom_url}
+            src={getLoomEmbedUrl(data.loom_url)}
             frameBorder="0"
             webkitallowfullscreen="true"
             mozallowfullscreen="true"
