@@ -7,10 +7,11 @@ services:
       - "3000:3000"
     environment:
       - PORT=3000
-      - DB_HOST=db
-      - DB_USER=root
-      - DB_PASSWORD=password
-      - DB_NAME=landing_pages
+      - MYSQLHOST=db
+      - MYSQLUSER=root
+      - MYSQLPASSWORD=password
+      - MYSQL_DATABASE=landing_pages
+      - MYSQLPORT=3306
     depends_on:
       - db
 
