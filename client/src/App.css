@@ -201,7 +201,7 @@ body {
 
 .help-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 30px;
   margin-bottom: 60px;
 }
@@ -271,6 +271,14 @@ body {
   opacity: 0.9;
   line-height: 1.6;
   color: #475569;
+  text-align: left;
+  font-size: 0.95rem;
+}
+
+.help-card p br {
+  display: block;
+  content: "";
+  margin-top: 8px;
 }
 
 /* Calendly section */
@@ -348,6 +356,13 @@ body {
 }
 
 /* Responsive design */
+@media (max-width: 1200px) {
+  .help-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+  }
+}
+
 @media (max-width: 768px) {
   .container {
     padding: 0 15px;
