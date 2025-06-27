@@ -72,6 +72,11 @@ body {
   object-fit: contain;
 }
 
+.logo.dark {
+  background: #111;
+  border: 1px solid #222;
+}
+
 /* CSS Custom Properties for Brand Colors */
 :root {
   --brand-color: #ff6b6b; /* Replace with client's brand color */

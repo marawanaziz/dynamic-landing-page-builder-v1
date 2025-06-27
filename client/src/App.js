@@ -7,9 +7,11 @@ import {
 } from "react-router-dom";
 import "./App.css";
 
-// Main logo URL
+// Logo URLs
 const MAIN_LOGO_URL =
   "https://sixtysixten.com/wp-content/uploads/2023/04/logo.webp";
+const MAIN_LOGO_WHITE_URL =
+  "https://sixtysixten.com/wp-content/uploads/2023/04/logo-white-150x36.webp";
 
 function getLoomEmbedUrl(url) {
   if (!url) return "";
@@ -32,11 +34,17 @@ function parseFeatures(featuresString) {
   }
 }
 
+function useDarkLogoFlag() {
+  // Checks if the URL contains ?dark or &dark
+  return /[?&]dark(=|&|$)/.test(window.location.search);
+}
+
 function LandingPage() {
   const { id } = useParams();
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const darkLogo = useDarkLogoFlag();
 
   const scrollToCalendly = (e) => {
     e.preventDefault();
@@ -129,15 +137,15 @@ function LandingPage() {
       <header className="header">
         <div className="container">
           <div className="logo-container">
-            <div className="logo">
+            <div className={`logo${darkLogo ? " dark" : ""}`}>
               <img
-                src={MAIN_LOGO_URL}
+                src={darkLogo ? MAIN_LOGO_WHITE_URL : MAIN_LOGO_URL}
                 alt="SixtySixten Logo"
                 style={{ maxWidth: "100%", maxHeight: "100%" }}
               />
             </div>
             {data.partner_logo_url && (
-              <div className="logo">
+              <div className={`logo${darkLogo ? " dark" : ""}`}>
                 <img
                   src={data.partner_logo_url}
                   alt="Partner Logo"
