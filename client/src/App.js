@@ -247,7 +247,11 @@ function LandingPage() {
             {/* Card 3: Accelerated Scale */}
             <div className="help-card card-red">
               <div className="help-icon icon-red">🚀</div>
-              <h3>Accelerated Scale</h3>
+              <h3>
+                Accelerated
+                <br />
+                Scale
+              </h3>
               <ul className="feature-list">
                 <li>
                   <span>
