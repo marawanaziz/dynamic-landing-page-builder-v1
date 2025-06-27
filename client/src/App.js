@@ -38,10 +38,14 @@ function LandingPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const scrollToCalendly = () => {
-    const calendlySection = document.getElementById("calendly-section");
+  const scrollToCalendly = (e) => {
+    e.preventDefault();
+    const calendlySection = document.getElementById("calendly");
     if (calendlySection) {
-      calendlySection.scrollIntoView({ behavior: "smooth" });
+      calendlySection.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
     }
   };
 
@@ -63,6 +67,52 @@ function LandingPage() {
       .finally(() => setLoading(false));
   }, [id]);
 
+  // Add interactive effects after component mounts
+  useEffect(() => {
+    if (!data) return;
+
+    // Add hover effects to cards
+    const cards = document.querySelectorAll(".help-card");
+    cards.forEach((card) => {
+      card.addEventListener("mouseenter", function () {
+        this.style.transform = "translateY(-10px) scale(1.02)";
+      });
+
+      card.addEventListener("mouseleave", function () {
+        this.style.transform = "translateY(0) scale(1)";
+      });
+    });
+
+    // Add parallax effect to hero section
+    const handleScroll = () => {
+      const scrolled = window.pageYOffset;
+      const hero = document.querySelector(".hero");
+      const rate = scrolled * -0.5;
+
+      if (hero) {
+        hero.style.transform = `translateY(${rate}px)`;
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    // Add loading animation
+    document.body.style.opacity = "0";
+    setTimeout(() => {
+      document.body.style.transition = "opacity 0.5s ease";
+      document.body.style.opacity = "1";
+    }, 100);
+
+    // Cleanup event listeners
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      cards.forEach((card) => {
+        card.removeEventListener("mouseenter", () => {});
+        card.removeEventListener("mouseleave", () => {});
+      });
+    };
+  }, [data]);
+
   if (loading) return <div className="loader">Loading...</div>;
   if (error) return <div className="error">{error}</div>;
   if (!data) return null;
@@ -71,103 +121,111 @@ function LandingPage() {
   const features = parseFeatures(data.features_list);
 
   // Use brand color from API, fallback to default
-  const brandColor = data.brand_color || "#0057ff";
+  const brandColor = data.brand_color || "#ff6b6b";
 
   return (
     <div className="landing-page" style={{ "--brand-color": brandColor }}>
-      {/* Dual Logo Header */}
-      <header className="dual-logo-header">
-        <img src={MAIN_LOGO_URL} alt="SixtySixten Logo" className="main-logo" />
-        {data.partner_logo_url && (
-          <img
-            src={data.partner_logo_url}
-            alt="Partner Logo"
-            className="partner-logo"
-          />
-        )}
+      {/* Header with logos */}
+      <header className="header">
+        <div className="container">
+          <div className="logo-container">
+            <div className="logo">
+              <img
+                src={MAIN_LOGO_URL}
+                alt="SixtySixten Logo"
+                style={{ maxWidth: "100%", maxHeight: "100%" }}
+              />
+            </div>
+            {data.partner_logo_url && (
+              <div className="logo">
+                <img
+                  src={data.partner_logo_url}
+                  alt="Partner Logo"
+                  style={{ maxWidth: "100%", maxHeight: "100%" }}
+                />
+              </div>
+            )}
+          </div>
+        </div>
       </header>
 
-      {/* Primary Header */}
-      <h1 className="primary-header">{data.primary_header}</h1>
-
-      {/* Subheader */}
-      <h2 className="subheader">{data.subheader}</h2>
-
-      {/* Centered CTA Button */}
-      <div style={{ display: "flex", justifyContent: "center" }}>
-        <button
-          className="cta-button"
-          onClick={scrollToCalendly}
-          style={{
-            backgroundColor: brandColor,
-            color: "#fff",
-            padding: "12px 24px",
-            border: "none",
-            borderRadius: "4px",
-            fontSize: "18px",
-            cursor: "pointer",
-            margin: "20px 0",
-            transition: "opacity 0.2s",
-          }}
-          onMouseOver={(e) => (e.target.style.opacity = "0.9")}
-          onMouseOut={(e) => (e.target.style.opacity = "1")}
-        >
-          Schedule a Call
-        </button>
-      </div>
-
-      {/* Loom Video Embed */}
-      {data.loom_url && (
-        <div
-          style={{
-            position: "relative",
-            paddingBottom: "55.73033707865168%",
-            height: 0,
-          }}
-        >
-          <iframe
-            src={getLoomEmbedUrl(data.loom_url)}
-            frameBorder="0"
-            webkitallowfullscreen="true"
-            mozallowfullscreen="true"
-            allowFullScreen
-            style={{
-              position: "absolute",
-              top: 0,
-              left: 0,
-              width: "100%",
-              height: "100%",
-            }}
-            title="Loom Video"
-          ></iframe>
+      {/* Hero section */}
+      <section className="hero">
+        <div className="container">
+          <h1>{data.primary_header}</h1>
+          <p>{data.subheader}</p>
+          <a href="#calendly" className="cta-button" onClick={scrollToCalendly}>
+            Schedule Your Strategy Call
+          </a>
         </div>
+      </section>
+
+      {/* Video section */}
+      {data.loom_url && (
+        <section className="video-section">
+          <div className="container">
+            <div className="video-container">
+              <div className="loom-embed">
+                <iframe
+                  src={getLoomEmbedUrl(data.loom_url)}
+                  frameBorder="0"
+                  webkitallowfullscreen="true"
+                  mozallowfullscreen="true"
+                  allowFullScreen
+                ></iframe>
+              </div>
+            </div>
+          </div>
+        </section>
       )}
 
-      {/* Features Section Header */}
-      <h3 className="features-header">Key Features</h3>
-
-      {/* Features List as Cards */}
-      <div className="features-card-list">
-        {features.map((feature, idx) => (
-          <div className="feature-card" key={idx}>
-            <div className="feature-icon">{idx + 1}</div>
-            <div className="feature-text">{feature}</div>
+      {/* How We Help section */}
+      <section className="help-section">
+        <div className="container">
+          <h2>How We Help You Succeed</h2>
+          <div className="help-grid">
+            {features.map((feature, idx) => {
+              const icons = ["🚀", "📊", "🎯", "⚡", "💡", "🤝"];
+              const icon = icons[idx % icons.length];
+              return (
+                <div className="help-card" key={idx}>
+                  <div className="help-icon">{icon}</div>
+                  <h3>{feature}</h3>
+                  <p>
+                    We help you achieve this through our proven methodologies
+                    and strategic approach.
+                  </p>
+                </div>
+              );
+            })}
           </div>
-        ))}
-      </div>
+        </div>
+      </section>
 
-      {/* Call-to-Action Header */}
-      <div className="cta-header">Ready to get started?</div>
-
-      {/* Calendly Embed */}
-      <div id="calendly-section" className="calendly-embed">
-        <iframe
-          src="https://calendly.com/sixtysixten/30min"
-          title="Book a Demo"
-          frameBorder="0"
-          style={{ width: "100%", minHeight: 600, maxWidth: 640 }}
-        ></iframe>
-      </div>
+      {/* Calendly section */}
+      <section className="calendly-section" id="calendly">
+        <div className="container">
+          <h2>Ready to Get Started?</h2>
+          <p>
+            Book your free strategy session and discover how we can help
+            transform your business.
+          </p>
+          <div className="calendly-container">
+            <iframe
+              src="https://calendly.com/sixtysixten/30min"
+              title="Book a Demo"
+              frameBorder="0"
+              style={{
+                width: "100%",
+                minHeight: 600,
+                maxWidth: 640,
+                border: "none",
+                borderRadius: "15px",
+              }}
+            ></iframe>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

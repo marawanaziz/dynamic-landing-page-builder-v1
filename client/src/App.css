@@ -1,202 +1,404 @@
-:root {
-  --brand-color: #0057ff;
-  --text-color: #222;
-  --bg-color: #fff;
-  --header-font: "Segoe UI", "Helvetica Neue", Arial, "Liberation Sans",
-    sans-serif;
-}
-
-body,
-html,
-#root,
-.landing-page {
-  min-height: 100vh;
+* {
   margin: 0;
   padding: 0;
-  background: var(--bg-color);
-  color: var(--text-color);
-  font-family: var(--header-font);
+  box-sizing: border-box;
 }
 
-.landing-page {
+body {
+  font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, sans-serif;
+  line-height: 1.6;
+  color: #1a1a1a;
+  background: #f8fafc;
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    #e2e8f0 1px,
+    transparent 0
+  );
+  background-size: 40px 40px;
+  overflow-x: hidden;
+}
+
+.container {
   max-width: 1200px;
-  margin: 40px auto;
-  background: #fff;
-  border-radius: 18px;
-  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.07);
-  padding: 40px 32px 48px 32px;
-  position: relative;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
-.dual-logo-header {
+/* Header with logos */
+.header {
+  padding: 20px 0;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.8);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.5);
+  animation: slideDown 0.8s ease-out;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.logo-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 32px;
-  margin-bottom: 32px;
-}
-
-.main-logo,
-.partner-logo {
-  height: 56px;
-  max-width: 160px;
-  object-fit: contain;
-  background: lightgray;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-  padding: 8px;
-}
-
-.primary-header {
-  font-size: 2.2rem;
-  font-weight: 700;
-  text-align: center;
-  margin: 24px 0 12px 0;
-  color: var(--brand-color);
-}
-
-.subheader {
-  font-size: 1.2rem;
-  text-align: center;
-  margin-bottom: 32px;
-  color: #444;
-}
-
-.loom-video {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 32px;
-}
-
-.features-header {
-  font-size: 1.3rem;
-  font-weight: 600;
-  margin: 32px 0 12px 0;
-  color: var(--brand-color);
-  text-align: center;
-}
-
-.features-list {
-  list-style: disc inside;
-  margin: 0 0 32px 0;
-  padding: 0 0 0 16px;
-  color: #333;
-  font-size: 1.05rem;
-}
-
-.features-list li {
-  margin-bottom: 8px;
-}
-
-.cta-header {
-  font-size: 1.25rem;
-  font-weight: 600;
-  text-align: center;
-  margin: 40px 0 16px 0;
-  color: var(--brand-color);
-}
-
-.calendly-embed {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 24px;
-}
-
-.loader,
-.error {
-  text-align: center;
-  margin-top: 80px;
-  font-size: 1.2rem;
-  color: var(--brand-color);
-}
-
-@media (max-width: 600px) {
-  .landing-page {
-    padding: 12px 2vw 32px 2vw;
-  }
-  .dual-logo-header {
-    gap: 12px;
-  }
-  .main-logo,
-  .partner-logo {
-    height: 40px;
-    max-width: 100px;
-    padding: 4px;
-  }
-  .primary-header {
-    font-size: 1.3rem;
-  }
-  .features-header {
-    font-size: 1.1rem;
-  }
-  .cta-header {
-    font-size: 1.05rem;
-  }
-  .calendly-embed iframe,
-  .loom-video iframe {
-    min-height: 320px !important;
-    height: 40vw !important;
-  }
-}
-
-.features-card-list {
-  display: flex;
+  gap: 40px;
   flex-wrap: wrap;
-  gap: 20px;
-  margin-bottom: 32px;
-  justify-content: center;
 }
 
-.feature-card {
-  background: #fff;
+.logo {
+  width: 120px;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.95);
   border-radius: 12px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-  padding: 24px 20px 16px 20px;
-  min-width: 180px;
-  max-width: 220px;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  transition: box-shadow 0.2s;
+  justify-content: center;
+  font-weight: bold;
+  color: #374151;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(226, 232, 240, 0.5);
+  overflow: hidden;
 }
 
-.feature-card:hover {
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+.logo:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
-.feature-icon {
-  width: 40px;
-  height: 40px;
-  background: var(--brand-color, #0057ff);
-  color: #fff;
+.logo img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* CSS Custom Properties for Brand Colors */
+:root {
+  --brand-color: #ff6b6b; /* Replace with client's brand color */
+  --brand-color-light: rgba(255, 107, 107, 0.3);
+  --brand-color-dark: #e55555;
+}
+
+/* Hero section */
+.hero {
+  text-align: center;
+  padding: 60px 0 40px;
+  animation: fadeInUp 1s ease-out 0.3s both;
+}
+
+.hero h1 {
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  margin-bottom: 20px;
+  background: linear-gradient(135deg, #1e293b 0%, #475569 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1.2;
+}
+
+.hero p {
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  margin-bottom: 30px;
+  opacity: 0.8;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  color: #475569;
+}
+
+/* CTA Button - Uses brand color */
+.cta-button {
+  display: inline-block;
+  padding: 16px 32px;
+  background: linear-gradient(
+    135deg,
+    var(--brand-color),
+    var(--brand-color-dark)
+  );
+  color: white;
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 32px var(--brand-color-light);
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 40px;
+  border: none;
+  cursor: pointer;
+}
+
+.cta-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.cta-button:hover::before {
+  left: 100%;
+}
+
+.cta-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px var(--brand-color-light);
+}
+
+/* Video section - Now appears above the fold */
+.video-section {
+  margin: 0 0 60px;
+  animation: fadeInUp 1s ease-out 0.6s both;
+}
+
+.video-container {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(226, 232, 240, 0.5);
+}
+
+.loom-embed {
+  position: relative;
+  padding-bottom: 59.15151515151514%;
+  height: 0;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.loom-embed iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+}
+
+/* How We Help section */
+.help-section {
+  padding: 100px 0 60px;
+  animation: fadeInUp 1s ease-out 0.9s both;
+}
+
+.help-section h2 {
+  text-align: center;
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin-bottom: 60px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.help-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-bottom: 60px;
+}
+
+.help-card {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 40px 30px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.help-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(
+    135deg,
+    var(--brand-color),
+    var(--brand-color-dark)
+  );
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.help-card:hover::before {
+  transform: scaleX(1);
+}
+
+.help-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
+
+.help-icon {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 20px;
+  background: linear-gradient(
+    135deg,
+    var(--brand-color),
+    var(--brand-color-dark)
+  );
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.3rem;
-  font-weight: bold;
-  margin-bottom: 12px;
+  font-size: 24px;
 }
 
-.feature-text {
-  text-align: center;
-  font-size: 1.05rem;
-  color: #222;
+.help-card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 15px;
+  font-weight: 600;
+  color: #1e293b;
 }
 
-.cta-button {
-  background: var(--brand-color, #0057ff);
-  color: #fff;
-  padding: 12px 24px;
-  border: none;
-  border-radius: 4px;
-  font-size: 18px;
-  cursor: pointer;
-  margin: 20px 0;
-  transition: opacity 0.2s;
-  display: inline-block;
-}
-
-.cta-button:hover {
+.help-card p {
   opacity: 0.9;
+  line-height: 1.6;
+  color: #475569;
+}
+
+/* Calendly section */
+.calendly-section {
+  padding: 60px 0 100px;
+  text-align: center;
+  animation: fadeInUp 1s ease-out 1.2s both;
+}
+
+.calendly-section h2 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin-bottom: 20px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.calendly-section p {
+  font-size: 1.2rem;
+  margin-bottom: 40px;
+  opacity: 0.8;
+  color: #475569;
+}
+
+.calendly-container {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 40px;
+  border: 1px solid rgba(226, 232, 240, 0.5);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+}
+
+/* Animations */
+@keyframes slideDown {
+  from {
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    transform: translateY(60px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Loading and error states */
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 1.2rem;
+  color: #475569;
+}
+
+.error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 1.2rem;
+  color: #dc2626;
+  text-align: center;
+  padding: 0 20px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 15px;
+  }
+
+  .logo-container {
+    gap: 20px;
+  }
+
+  .logo {
+    width: 100px;
+    height: 50px;
+    font-size: 0.9rem;
+  }
+
+  .hero {
+    padding: 40px 0 30px;
+  }
+
+  .video-section {
+    margin: 0 0 40px;
+  }
+
+  .help-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .help-card {
+    padding: 30px 20px;
+  }
+
+  .calendly-container {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cta-button {
+    padding: 15px 30px;
+    font-size: 1rem;
+  }
+
+  .help-section {
+    padding: 60px 0;
+  }
+
+  .calendly-section {
+    padding: 60px 0;
+  }
 }
