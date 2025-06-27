@@ -105,11 +105,12 @@ body {
 .hero p {
   font-size: clamp(1rem, 2.5vw, 1.2rem);
   margin-bottom: 30px;
-  opacity: 0.8;
+  opacity: 0.95;
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
-  color: #475569;
+  color: #1e293b;
+  font-weight: 700;
 }
 
 /* CTA Button - Uses brand color */
