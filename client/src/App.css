@@ -206,79 +206,130 @@ body {
   margin-bottom: 60px;
 }
 
+/* Card color themes */
+.card-yellow {
+  border-top: 6px solid #ffc72c;
+}
+.card-blue {
+  border-top: 6px solid #3b82f6;
+}
+.card-red {
+  border-top: 6px solid #f43f5e;
+}
+.card-green {
+  border-top: 6px solid #22c55e;
+}
+
+.icon-yellow {
+  background: #fff7db;
+  color: #ffc72c;
+}
+.icon-blue {
+  background: #e6f0ff;
+  color: #3b82f6;
+}
+.icon-red {
+  background: #ffe6ea;
+  color: #f43f5e;
+}
+.icon-green {
+  background: #e6fbe8;
+  color: #22c55e;
+}
+
 .help-card {
-  background: rgba(255, 255, 255, 1);
-  backdrop-filter: blur(10px);
+  background: #fff;
   border-radius: 20px;
-  padding: 40px 30px;
-  text-align: center;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  transition: all 0.3s ease;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.07);
+  padding: 36px 28px 32px 28px;
+  text-align: left;
+  border: none;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-}
-
-.help-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(
-    135deg,
-    var(--brand-color),
-    var(--brand-color-dark)
-  );
-  transform: scaleX(0);
-  transition: transform 0.3s ease;
-}
-
-.help-card:hover::before {
-  transform: scaleX(1);
-}
-
-.help-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
-}
-
-.help-icon {
-  width: 60px;
-  height: 60px;
-  margin: 0 auto 20px;
-  background: linear-gradient(
-    135deg,
-    var(--brand-color),
-    rgba(255, 255, 255, 1)
-  );
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
+  transition: box-shadow 0.2s, transform 0.2s;
+  min-width: 0;
 }
 
 .help-card h3 {
-  font-size: 1.4rem;
-  margin-bottom: 15px;
-  font-weight: 600;
+  font-size: 1.35rem;
+  margin-bottom: 18px;
+  font-weight: 700;
   color: #1e293b;
-}
-
-.help-card p {
-  opacity: 0.9;
-  line-height: 1.6;
-  color: #475569;
   text-align: left;
-  font-size: 0.95rem;
 }
 
-.help-card p br {
-  display: block;
-  content: "";
-  margin-top: 8px;
+.help-icon {
+  width: 56px;
+  height: 56px;
+  margin: 0 0 24px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  border-radius: 50%;
+  margin-left: 0;
+}
+
+.feature-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.feature-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 18px;
+  font-size: 1.05rem;
+  color: #374151;
+  position: relative;
+}
+
+.card-yellow .feature-list li::before {
+  content: "✔";
+  color: #ffc72c;
+  font-weight: bold;
+  margin-right: 8px;
+  font-size: 1.1em;
+}
+.card-blue .feature-list li::before {
+  content: "✔";
+  color: #3b82f6;
+  font-weight: bold;
+  margin-right: 8px;
+  font-size: 1.1em;
+}
+.card-red .feature-list li::before {
+  content: "✔";
+  color: #f43f5e;
+  font-weight: bold;
+  margin-right: 8px;
+  font-size: 1.1em;
+}
+.card-green .feature-list li::before {
+  content: "✔";
+  color: #22c55e;
+  font-weight: bold;
+  margin-right: 8px;
+  font-size: 1.1em;
+}
+
+.highlight-yellow {
+  color: #ff9800;
+  font-weight: 600;
+}
+.highlight-blue {
+  color: #2563eb;
+  font-weight: 600;
+}
+.highlight-red {
+  color: #e11d48;
+  font-weight: 600;
+}
+.highlight-green {
+  color: #16a34a;
+  font-weight: 600;
 }
 
 /* Calendly section */
@@ -392,7 +443,7 @@ body {
   }
 
   .help-card {
-    padding: 30px 20px;
+    padding: 24px 12px 20px 12px;
   }
 
   .calendly-container {

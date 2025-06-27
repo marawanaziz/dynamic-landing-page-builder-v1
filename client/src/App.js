@@ -182,60 +182,121 @@ function LandingPage() {
       {/* How We Help section */}
       <section className="help-section">
         <div className="container">
-          <h2>Revolutionize Your Go-to-Market Strategy</h2>
+          <h2>
+            Revolutionize Your Go-to-Market
+            <br />
+            Strategy
+          </h2>
           <div className="help-grid">
-            <div className="help-card">
-              <div className="help-icon">💰</div>
+            {/* Card 1: Enhanced Revenue Pipeline */}
+            <div className="help-card card-yellow">
+              <div className="help-icon icon-yellow">💰</div>
               <h3>Enhanced Revenue Pipeline</h3>
-              <p>
-                • Identify high-value prospects using data-backed qualification
-                methods
-                <br />
-                • Achieve higher conversion rates through strategic engagement
-                timing
-                <br />
-                • Unlock hidden market opportunities with comprehensive
-                territory mapping
-                <br />• Secure every lead with systematic follow-up processes
-              </p>
+              <ul className="feature-list">
+                <li>
+                  <span>
+                    Identify{" "}
+                    <span className="highlight-yellow">
+                      high-value prospects
+                    </span>{" "}
+                    with data-backed methods
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    Achieve higher conversions through{" "}
+                    <span className="highlight-yellow">strategic timing</span>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    Unlock hidden market opportunities across{" "}
+                    <span className="highlight-yellow">territories</span>
+                  </span>
+                </li>
+              </ul>
             </div>
-            <div className="help-card">
-              <div className="help-icon">⚡</div>
+            {/* Card 2: Streamlined Operations */}
+            <div className="help-card card-blue">
+              <div className="help-icon icon-blue">⚡</div>
               <h3>Streamlined Operations</h3>
-              <p>
-                • Eliminate lost deals with automated tracking and alerts
-                <br />
-                • Orchestrate multi-channel campaigns with unified workflows
-                <br />
-                • Free your sales team to build connections instead of managing
-                tasks
-                <br />• Reduce administrative burden by automating 80% of
-                routine processes
-              </p>
+              <ul className="feature-list">
+                <li>
+                  <span>
+                    Eliminate lost deals with{" "}
+                    <span className="highlight-blue">automated tracking</span>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    Orchestrate{" "}
+                    <span className="highlight-blue">
+                      multi-channel campaigns
+                    </span>{" "}
+                    seamlessly
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    Free sales teams from{" "}
+                    <span className="highlight-blue">administrative tasks</span>
+                  </span>
+                </li>
+              </ul>
             </div>
-            <div className="help-card">
-              <div className="help-icon">🚀</div>
+            {/* Card 3: Accelerated Scale */}
+            <div className="help-card card-red">
+              <div className="help-icon icon-red">🚀</div>
               <h3>Accelerated Scale</h3>
-              <p>
-                • Maintain data quality while expanding at rapid pace
-                <br />
-                • Deploy intelligent automation without technical complexity
-                <br />
-                • Grow revenue streams without proportional team expansion
-                <br />• Enter new markets with confidence and strategic planning
-              </p>
+              <ul className="feature-list">
+                <li>
+                  <span>
+                    Maintain <span className="highlight-red">data quality</span>{" "}
+                    while expanding rapidly
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    Deploy automation{" "}
+                    <span className="highlight-red">
+                      without technical complexity
+                    </span>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    Grow revenue{" "}
+                    <span className="highlight-red">
+                      without scaling headcount
+                    </span>
+                  </span>
+                </li>
+              </ul>
             </div>
-            <div className="help-card">
-              <div className="help-icon">📊</div>
+            {/* Card 4: Strategic Intelligence */}
+            <div className="help-card card-green">
+              <div className="help-icon icon-green">📊</div>
               <h3>Strategic Intelligence</h3>
-              <p>
-                • Convert sales activities into quantifiable business impact
-                <br />
-                • Monitor your complete revenue engine with live dashboards
-                <br />
-                • Extract actionable intelligence from performance analytics
-                <br />• Optimize prospect targeting through behavioral insights
-              </p>
+              <ul className="feature-list">
+                <li>
+                  <span>
+                    Convert activities into{" "}
+                    <span className="highlight-green">measurable ROI</span>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    Monitor your revenue engine in{" "}
+                    <span className="highlight-green">real-time</span>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    Optimize targeting with{" "}
+                    <span className="highlight-green">behavioral insights</span>
+                  </span>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
