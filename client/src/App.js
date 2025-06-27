@@ -182,22 +182,61 @@ function LandingPage() {
       {/* How We Help section */}
       <section className="help-section">
         <div className="container">
-          <h2>How We Help You Succeed</h2>
+          <h2>Revolutionize Your Go-to-Market Strategy</h2>
           <div className="help-grid">
-            {features.map((feature, idx) => {
-              const icons = ["🚀", "📊", "🎯", "⚡", "💡", "🤝"];
-              const icon = icons[idx % icons.length];
-              return (
-                <div className="help-card" key={idx}>
-                  <div className="help-icon">{icon}</div>
-                  <h3>{feature}</h3>
-                  <p>
-                    We help you achieve this through our proven methodologies
-                    and strategic approach.
-                  </p>
-                </div>
-              );
-            })}
+            <div className="help-card">
+              <div className="help-icon">💰</div>
+              <h3>Enhanced Revenue Pipeline</h3>
+              <p>
+                • Identify high-value prospects using data-backed qualification
+                methods
+                <br />
+                • Achieve higher conversion rates through strategic engagement
+                timing
+                <br />
+                • Unlock hidden market opportunities with comprehensive
+                territory mapping
+                <br />• Secure every lead with systematic follow-up processes
+              </p>
+            </div>
+            <div className="help-card">
+              <div className="help-icon">⚡</div>
+              <h3>Streamlined Operations</h3>
+              <p>
+                • Eliminate lost deals with automated tracking and alerts
+                <br />
+                • Orchestrate multi-channel campaigns with unified workflows
+                <br />
+                • Free your sales team to build connections instead of managing
+                tasks
+                <br />• Reduce administrative burden by automating 80% of
+                routine processes
+              </p>
+            </div>
+            <div className="help-card">
+              <div className="help-icon">🚀</div>
+              <h3>Accelerated Scale</h3>
+              <p>
+                • Maintain data quality while expanding at rapid pace
+                <br />
+                • Deploy intelligent automation without technical complexity
+                <br />
+                • Grow revenue streams without proportional team expansion
+                <br />• Enter new markets with confidence and strategic planning
+              </p>
+            </div>
+            <div className="help-card">
+              <div className="help-icon">📊</div>
+              <h3>Strategic Intelligence</h3>
+              <p>
+                • Convert sales activities into quantifiable business impact
+                <br />
+                • Monitor your complete revenue engine with live dashboards
+                <br />
+                • Extract actionable intelligence from performance analytics
+                <br />• Optimize prospect targeting through behavioral insights
+              </p>
+            </div>
           </div>
         </div>
       </section>
