@@ -11,7 +11,7 @@ import "./App.css";
 const MAIN_LOGO_URL =
   "https://sixtysixten.com/wp-content/uploads/2023/04/logo.webp";
 const MAIN_LOGO_WHITE_URL =
-  "https://sixtysixten.com/wp-content/uploads/2023/04/logo-white-150x36.webp";
+  "https://sixtysixten.com/wp-content/uploads/2025/06/SSTLOGO-White-scaled.png";
 
 function getLoomEmbedUrl(url) {
   if (!url) return "";
