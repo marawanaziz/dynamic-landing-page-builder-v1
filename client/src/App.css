@@ -111,11 +111,7 @@ body {
 .cta-button {
   display: inline-block;
   padding: 16px 32px;
-  background: linear-gradient(
-    135deg,
-    var(--brand-color),
-    rgba(255, 255, 255, 1)
-  );
+  background: linear-gradient(135deg, var(--brand-color), #000000);
   color: white;
   text-decoration: none;
   border-radius: 50px;
