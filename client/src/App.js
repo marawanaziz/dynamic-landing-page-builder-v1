@@ -217,8 +217,7 @@ function LandingPage() {
               frameBorder="0"
               style={{
                 width: "100%",
-                minHeight: 600,
-                maxWidth: 640,
+                height: "700px",
                 border: "none",
                 borderRadius: "15px",
               }}
