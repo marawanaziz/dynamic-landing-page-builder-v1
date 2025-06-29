@@ -33,23 +33,20 @@ function parseFeatures(featuresString) {
   }
 }
 
-function parseWorkflowBreakdown(breakdownText) {
+function parseWorkflowBreakdown(
+  breakdownText,
+  onlyPhases = false,
+  onlySpecialCards = false
+) {
   if (!breakdownText) return "";
-
-  // Pre-process: add a newline after each bold label if not already present
   breakdownText = breakdownText.replace(/(\*\*.*?\*\*:)/g, "$1\n");
-
-  // Split into sections by phase or header
   const phaseRegex = /### (.*?)\n([\s\S]*?)(?=### |$)/g;
   let html = "";
   let match;
-  // Collect special cards to render later
   let specialCards = [];
   while ((match = phaseRegex.exec(breakdownText)) !== null) {
     const title = match[1].trim();
     let content = match[2].trim();
-
-    // For Integration, Measurement, ROI: treat all lines as list items with arrow
     if (
       /Integration Architecture/i.test(title) ||
       /Success Measurement/i.test(title) ||
@@ -73,10 +70,9 @@ function parseWorkflowBreakdown(breakdownText) {
         ? "success-measurement-card"
         : "roi-projection-card";
       specialCards.push(
-        `<div class="${cardClass}"><h4>${title}</h4>${list}</div>`
+        `<div class=\"${cardClass}\"><h4>${title}</h4>${list}</div>`
       );
-    } else {
-      // For phase details, split into lines and render each label/value pair as a row
+    } else if (!onlySpecialCards) {
       let lines = content
         .split(/\n+/)
         .map((l) => l.trim())
@@ -91,11 +87,15 @@ function parseWorkflowBreakdown(breakdownText) {
           }
         })
         .join("");
-      html += `<div class="phase-section"><div class="phase-title">${title}</div>${details}</div>`;
+      if (!onlySpecialCards) {
+        html += `<div class=\"phase-section\"><div class=\"phase-title\">${title}</div>${details}</div>`;
+      }
     }
   }
-  // Render the special cards in a horizontal row below the main html
-  if (specialCards.length > 0) {
+  if (onlySpecialCards) {
+    return specialCards.join("");
+  }
+  if (!onlyPhases && specialCards.length > 0) {
     html += `<div class='workflow-cards-row'>${specialCards.join("")}</div>`;
   }
   return html;
@@ -573,7 +573,6 @@ function WorkflowPage() {
                 <h1 className="workflow-title">GTM Automation Workflow</h1>
                 <p className="workflow-subtitle">{data.workflow_name}</p>
               </div>
-
               <div className="workflow-content">
                 <div className="top-section">
                   <div className="details-section">
@@ -663,7 +662,8 @@ function WorkflowPage() {
                         <div
                           dangerouslySetInnerHTML={{
                             __html: parseWorkflowBreakdown(
-                              data.in_depth_workflow_breakdown
+                              data.in_depth_workflow_breakdown,
+                              true
                             ),
                           }}
                         />
@@ -677,6 +677,20 @@ function WorkflowPage() {
                     </div>
                   </div>
                 </div>
+
+                {/* Render the workflow cards row below the entire workflow section */}
+                {data.in_depth_workflow_breakdown && (
+                  <div
+                    className="workflow-cards-row"
+                    dangerouslySetInnerHTML={{
+                      __html: parseWorkflowBreakdown(
+                        data.in_depth_workflow_breakdown,
+                        false,
+                        true
+                      ),
+                    }}
+                  />
+                )}
               </div>
             </div>
           </div>
