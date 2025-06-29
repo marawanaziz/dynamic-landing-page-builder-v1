@@ -419,6 +419,12 @@ function LandingPage() {
   );
 }
 
+// Utility function to capitalize the first letter
+function capitalizeFirstLetter(str) {
+  if (!str) return str;
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
 function WorkflowPage() {
   const { id } = useParams();
   const [data, setData] = useState(null);
@@ -594,7 +600,9 @@ function WorkflowPage() {
                           {Array.isArray(data.revenue_impact_summary)
                             ? data.revenue_impact_summary.map((item, idx) => (
                                 <div key={idx} className="revenue-impact-card">
-                                  {item.replace(/^Direct impact:\s*/i, "")}
+                                  {capitalizeFirstLetter(
+                                    item.replace(/^Direct impact:\s*/i, "")
+                                  )}
                                 </div>
                               ))
                             : typeof data.revenue_impact_summary === "string" &&
@@ -606,7 +614,9 @@ function WorkflowPage() {
                                     key={idx}
                                     className="revenue-impact-card"
                                   >
-                                    {item.replace(/^Direct impact:\s*/i, "")}
+                                    {capitalizeFirstLetter(
+                                      item.replace(/^Direct impact:\s*/i, "")
+                                    )}
                                   </div>
                                 ))}
                         </div>

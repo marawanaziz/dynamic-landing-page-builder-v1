@@ -588,9 +588,27 @@ body {
   .integration-list,
   .success-measurement-card,
   .roi-projection-card {
-    padding: 12px 8px;
-    font-size: 0.98rem;
-    box-sizing: border-box;
+    padding: 8px 6px;
+    font-size: 0.97rem;
+    margin-bottom: 6px;
+    margin-top: 0;
+  }
+  .integration-list ul,
+  .success-measurement-card ul,
+  .roi-projection-card ul {
+    padding-left: 0;
+  }
+  .integration-list li,
+  .success-measurement-card li,
+  .roi-projection-card li {
+    padding: 4px 0 4px 22px;
+    font-size: 0.97rem;
+  }
+  .integration-list h4,
+  .success-measurement-card h4,
+  .roi-projection-card h4 {
+    font-size: 1.01rem;
+    margin-bottom: 6px;
   }
   .phase-title {
     font-size: 1.01rem;
@@ -910,11 +928,16 @@ body {
 @media (max-width: 768px) {
   .revenue-impact-grid {
     flex-direction: column;
-    gap: 10px;
+    gap: 6px;
+    margin-top: 4px;
   }
   .revenue-impact-card {
     min-width: 0;
     width: 100%;
+    margin-bottom: 0;
+    margin-top: 0;
+    padding: 8px 6px;
+    font-size: 0.97rem;
   }
 }
 
