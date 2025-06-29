@@ -59,13 +59,31 @@ function parseWorkflowBreakdown(breakdownText) {
       content = content.replace(/(<li>.*?<\/li>)/gs, "<ul>$1</ul>");
     }
 
-    // Special blocks for Integration, Measurement, ROI
-    if (/Integration Architecture/i.test(title)) {
-      html += `<div class="integration-list"><h4>${title}</h4>${content}</div>`;
-    } else if (/Success Measurement/i.test(title)) {
-      html += `<div class="success-measurement-card"><h4>${title}</h4>${content}</div>`;
-    } else if (/ROI Projection/i.test(title)) {
-      html += `<div class="roi-projection-card"><h4>${title}</h4>${content}</div>`;
+    // For Integration, Measurement, ROI: treat all lines as list items with arrow
+    if (
+      /Integration Architecture/i.test(title) ||
+      /Success Measurement/i.test(title) ||
+      /ROI Projection/i.test(title)
+    ) {
+      // Split content into lines, filter out empty, wrap each in <li>
+      let lines = content
+        .split(/\n|<br\s*\/?>(?![^<]*<\/li>)/)
+        .map((l) => l.trim())
+        .filter((l) => l.length > 0 && !l.startsWith("<ul>"));
+      let list =
+        "<ul>" +
+        lines
+          .map((l) =>
+            l.startsWith("<li>") ? l : `<li>${l.replace(/^[-•→]?\s*/, "")}</li>`
+          )
+          .join("") +
+        "</ul>";
+      let cardClass = /Integration Architecture/i.test(title)
+        ? "integration-list"
+        : /Success Measurement/i.test(title)
+        ? "success-measurement-card"
+        : "roi-projection-card";
+      html += `<div class="${cardClass}"><h4>${title}</h4>${list}</div>`;
     } else {
       html += `<div class="phase-section"><div class="phase-title">${title}</div>${content}</div>`;
     }

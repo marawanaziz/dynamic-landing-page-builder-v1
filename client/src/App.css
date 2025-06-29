@@ -408,30 +408,83 @@ body {
   min-height: 600px;
 }
 
-.integration-list {
-  background: #e3f2fd;
-  padding: 15px;
+.integration-list,
+.success-measurement-card,
+.roi-projection-card {
+  padding: 16px 20px;
   border-radius: 8px;
-  margin: 15px 0;
+  margin-bottom: 18px;
+  margin-top: 8px;
+  box-shadow: 0 2px 8px rgba(52, 152, 219, 0.07);
 }
-
-.integration-list ul {
-  list-style-type: none;
+.integration-list {
+  background: linear-gradient(135deg, #e3f0fc 0%, #cbe7ff 100%);
+  color: #1a365d;
+  border-left: 4px solid #3498db;
+}
+.success-measurement-card {
+  background: linear-gradient(135deg, #fdf6e3 0%, #fffbe6 100%);
+  color: #7c5e00;
+  border-left: 4px solid #ffc72c;
+}
+.roi-projection-card {
+  background: linear-gradient(135deg, #e9f7ef 0%, #d4efdf 100%);
+  color: #186a3b;
+  border-left: 4px solid #28b463;
+}
+.integration-list h4,
+.success-measurement-card h4,
+.roi-projection-card h4 {
+  font-size: 1.13rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: inherit;
+}
+.integration-list ul,
+.success-measurement-card ul,
+.roi-projection-card ul {
+  margin: 0;
   padding-left: 0;
+  list-style: none;
 }
-
-.integration-list li {
-  padding: 5px 0;
-  padding-left: 20px;
+.integration-list li,
+.success-measurement-card li,
+.roi-projection-card li {
+  padding: 5px 0 5px 24px;
   position: relative;
+  font-size: 1.01rem;
+  font-weight: 500;
+  color: inherit;
 }
-
-.integration-list li:before {
+.integration-list li:before,
+.success-measurement-card li:before,
+.roi-projection-card li:before {
   content: "→";
   position: absolute;
   left: 0;
   color: #1976d2;
   font-weight: bold;
+  font-size: 1.1em;
+}
+.integration-list p,
+.success-measurement-card p,
+.roi-projection-card p {
+  margin: 0;
+  font-size: 1.01rem;
+  font-weight: 500;
+  color: inherit;
+  padding-left: 24px;
+  position: relative;
+}
+.integration-list p:before,
+.success-measurement-card p:before,
+.roi-projection-card p:before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: #1976d2;
+  font-weight: bold;
+  font-size: 1.1em;
 }
 
 /* Add spacing for integration, measurement, and ROI sections */
@@ -808,29 +861,4 @@ body {
   box-shadow: 0 2px 8px rgba(52, 152, 219, 0.07);
   margin-top: 8px;
   margin-bottom: 8px;
-}
-
-.success-measurement-card,
-.roi-projection-card {
-  background: linear-gradient(135deg, #fdf6e3 0%, #fffbe6 100%);
-  color: #7c5e00;
-  border-left: 4px solid #ffc72c;
-  border-radius: 8px;
-  padding: 16px 20px;
-  font-weight: 600;
-  font-size: 1.05rem;
-  box-shadow: 0 2px 8px rgba(255, 199, 44, 0.07);
-  margin-bottom: 18px;
-  margin-top: 8px;
-}
-
-.success-measurement-card ul {
-  margin: 0;
-  padding-left: 18px;
-}
-
-.roi-projection-card {
-  background: linear-gradient(135deg, #e9f7ef 0%, #d4efdf 100%);
-  color: #186a3b;
-  border-left: 4px solid #28b463;
 }
