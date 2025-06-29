@@ -588,10 +588,12 @@ body {
   .integration-list,
   .success-measurement-card,
   .roi-projection-card {
-    padding: 8px 6px;
-    font-size: 0.97rem;
-    margin-bottom: 6px;
-    margin-top: 0;
+    padding: 4px 6px !important;
+    align-items: flex-start !important;
+    font-size: 0.97rem !important;
+    min-width: 0 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
   }
   .integration-list ul,
   .success-measurement-card ul,
@@ -618,8 +620,12 @@ body {
     font-size: 0.98rem;
   }
   .revenue-impact-card {
-    font-size: 0.98rem;
-    padding: 10px 8px;
+    padding: 4px 6px !important;
+    align-items: flex-start !important;
+    font-size: 0.97rem !important;
+    min-width: 0 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
   }
 }
 
@@ -891,10 +897,9 @@ body {
   .integration-list,
   .success-measurement-card,
   .roi-projection-card {
-    padding: 8px 6px !important;
+    padding: 4px 6px !important;
+    align-items: flex-start !important;
     font-size: 0.97rem !important;
-    margin-bottom: 6px !important;
-    margin-top: 0 !important;
     min-width: 0 !important;
     width: 100% !important;
     box-sizing: border-box !important;
@@ -953,8 +958,9 @@ body {
     width: 100%;
     margin-bottom: 0;
     margin-top: 0;
-    padding: 8px 6px;
-    font-size: 0.97rem;
+    padding: 4px 6px !important;
+    align-items: flex-start !important;
+    font-size: 0.97rem !important;
   }
 }
 

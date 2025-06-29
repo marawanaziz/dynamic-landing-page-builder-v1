@@ -419,10 +419,10 @@ function LandingPage() {
   );
 }
 
-// Utility function to capitalize the first letter
-function capitalizeFirstLetter(str) {
+// Utility function to capitalize the first alphabetical character
+function capitalizeFirstAlpha(str) {
   if (!str) return str;
-  return str.charAt(0).toUpperCase() + str.slice(1);
+  return str.replace(/([a-zA-Z])/, (m) => m.toUpperCase());
 }
 
 function WorkflowPage() {
@@ -603,13 +603,12 @@ function WorkflowPage() {
                                   /^Direct impact:\s*/i,
                                   ""
                                 );
-                                console.log("Revenue Impact Card:", clean);
                                 return (
                                   <div
                                     key={idx}
                                     className="revenue-impact-card"
                                   >
-                                    {capitalizeFirstLetter(clean)}
+                                    {capitalizeFirstAlpha(clean)}
                                   </div>
                                 );
                               })
@@ -622,13 +621,12 @@ function WorkflowPage() {
                                     /^Direct impact:\s*/i,
                                     ""
                                   );
-                                  console.log("Revenue Impact Card:", clean);
                                   return (
                                     <div
                                       key={idx}
                                       className="revenue-impact-card"
                                     >
-                                      {capitalizeFirstLetter(clean)}
+                                      {capitalizeFirstAlpha(clean)}
                                     </div>
                                   );
                                 })}
