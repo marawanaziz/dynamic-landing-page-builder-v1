@@ -886,6 +886,23 @@ body {
   .calendly-container {
     padding: 20px;
   }
+
+  .revenue-impact-card,
+  .integration-list,
+  .success-measurement-card,
+  .roi-projection-card {
+    padding: 8px 6px !important;
+    font-size: 0.97rem !important;
+    margin-bottom: 6px !important;
+    margin-top: 0 !important;
+    min-width: 0 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  .revenue-impact-grid {
+    gap: 6px !important;
+    margin-top: 4px !important;
+  }
 }
 
 @media (max-width: 480px) {

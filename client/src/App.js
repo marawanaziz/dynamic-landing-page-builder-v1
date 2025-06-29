@@ -598,27 +598,40 @@ function WorkflowPage() {
                       <div className="section-content">
                         <div className="revenue-impact-grid">
                           {Array.isArray(data.revenue_impact_summary)
-                            ? data.revenue_impact_summary.map((item, idx) => (
-                                <div key={idx} className="revenue-impact-card">
-                                  {capitalizeFirstLetter(
-                                    item.replace(/^Direct impact:\s*/i, "")
-                                  )}
-                                </div>
-                              ))
-                            : typeof data.revenue_impact_summary === "string" &&
-                              data.revenue_impact_summary
-                                .split(/\n|,|;|\./)
-                                .filter((line) => line.trim())
-                                .map((item, idx) => (
+                            ? data.revenue_impact_summary.map((item, idx) => {
+                                const clean = item.replace(
+                                  /^Direct impact:\s*/i,
+                                  ""
+                                );
+                                console.log("Revenue Impact Card:", clean);
+                                return (
                                   <div
                                     key={idx}
                                     className="revenue-impact-card"
                                   >
-                                    {capitalizeFirstLetter(
-                                      item.replace(/^Direct impact:\s*/i, "")
-                                    )}
+                                    {capitalizeFirstLetter(clean)}
                                   </div>
-                                ))}
+                                );
+                              })
+                            : typeof data.revenue_impact_summary === "string" &&
+                              data.revenue_impact_summary
+                                .split(/\n|,|;|\./)
+                                .filter((line) => line.trim())
+                                .map((item, idx) => {
+                                  const clean = item.replace(
+                                    /^Direct impact:\s*/i,
+                                    ""
+                                  );
+                                  console.log("Revenue Impact Card:", clean);
+                                  return (
+                                    <div
+                                      key={idx}
+                                      className="revenue-impact-card"
+                                    >
+                                      {capitalizeFirstLetter(clean)}
+                                    </div>
+                                  );
+                                })}
                         </div>
                       </div>
                     </div>
