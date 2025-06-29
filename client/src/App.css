@@ -336,28 +336,41 @@ body {
 }
 
 .phase-title {
-  font-size: 1.15rem;
+  font-size: 1.18rem;
   font-weight: 700;
-  color: #2c3e50;
-  margin-bottom: 10px;
+  color: #1a365d;
+  margin-bottom: 16px;
 }
 
 .phase-detail {
-  margin: 14px 0 14px 0;
-  padding-left: 0;
-  font-size: 1rem;
+  margin: 12px 0 12px 0;
+  font-size: 1.04rem;
   color: #374151;
   display: flex;
   align-items: flex-start;
   line-height: 1.7;
 }
 
-.phase-detail strong {
+.phase-label {
   color: #3498db;
-  font-weight: 600;
-  min-width: 140px;
+  font-weight: 700;
+  min-width: 120px;
+  font-size: 1.04rem;
+  margin-right: 10px;
   display: inline-block;
-  margin-right: 12px;
+}
+
+.phase-value {
+  color: #374151;
+  font-weight: 500;
+  font-size: 1.04rem;
+  display: inline-block;
+}
+
+.phase-freeform {
+  color: #374151;
+  font-size: 1.01rem;
+  margin-left: 0;
 }
 
 .metrics-grid {

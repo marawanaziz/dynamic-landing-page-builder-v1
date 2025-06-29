@@ -47,25 +47,12 @@ function parseWorkflowBreakdown(breakdownText) {
     const title = match[1].trim();
     let content = match[2].trim();
 
-    // Format Trigger, Process, etc. as bold labels with spacing
-    content = content.replace(
-      /\*\*(.*?)\*\*: ?([^\n]*)/g,
-      '<div class="phase-detail"><strong>$1:</strong> $2</div>'
-    );
-
-    // Format bullet lists
-    content = content.replace(/^- (.*)$/gm, "<li>$1</li>");
-    if (content.includes("<li>")) {
-      content = content.replace(/(<li>.*?<\/li>)/gs, "<ul>$1</ul>");
-    }
-
     // For Integration, Measurement, ROI: treat all lines as list items with arrow
     if (
       /Integration Architecture/i.test(title) ||
       /Success Measurement/i.test(title) ||
       /ROI Projection/i.test(title)
     ) {
-      // Split content into lines, filter out empty, wrap each in <li>
       let lines = content
         .split(/\n|<br\s*\/?>(?![^<]*<\/li>)/)
         .map((l) => l.trim())
@@ -85,7 +72,22 @@ function parseWorkflowBreakdown(breakdownText) {
         : "roi-projection-card";
       html += `<div class="${cardClass}"><h4>${title}</h4>${list}</div>`;
     } else {
-      html += `<div class="phase-section"><div class="phase-title">${title}</div>${content}</div>`;
+      // For phase details, split into lines and render each label/value pair as a row
+      let lines = content
+        .split(/\n+/)
+        .map((l) => l.trim())
+        .filter((l) => l.length > 0);
+      let details = lines
+        .map((line) => {
+          const match = line.match(/^\*\*(.*?)\*\*:\s*(.*)$/);
+          if (match) {
+            return `<div class='phase-detail'><span class='phase-label'>${match[1]}:</span> <span class='phase-value'>${match[2]}</span></div>`;
+          } else {
+            return `<div class='phase-detail phase-freeform'>${line}</div>`;
+          }
+        })
+        .join("");
+      html += `<div class="phase-section"><div class="phase-title">${title}</div>${details}</div>`;
     }
   }
   return html;
