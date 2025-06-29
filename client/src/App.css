@@ -343,19 +343,21 @@ body {
 }
 
 .phase-detail {
-  margin: 7px 0 7px 0;
+  margin: 14px 0 14px 0;
   padding-left: 0;
   font-size: 1rem;
   color: #374151;
   display: flex;
   align-items: flex-start;
+  line-height: 1.7;
 }
 
 .phase-detail strong {
   color: #3498db;
   font-weight: 600;
-  min-width: 110px;
+  min-width: 140px;
   display: inline-block;
+  margin-right: 12px;
 }
 
 .metrics-grid {
@@ -806,4 +808,29 @@ body {
   box-shadow: 0 2px 8px rgba(52, 152, 219, 0.07);
   margin-top: 8px;
   margin-bottom: 8px;
+}
+
+.success-measurement-card,
+.roi-projection-card {
+  background: linear-gradient(135deg, #fdf6e3 0%, #fffbe6 100%);
+  color: #7c5e00;
+  border-left: 4px solid #ffc72c;
+  border-radius: 8px;
+  padding: 16px 20px;
+  font-weight: 600;
+  font-size: 1.05rem;
+  box-shadow: 0 2px 8px rgba(255, 199, 44, 0.07);
+  margin-bottom: 18px;
+  margin-top: 8px;
+}
+
+.success-measurement-card ul {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.roi-projection-card {
+  background: linear-gradient(135deg, #e9f7ef 0%, #d4efdf 100%);
+  color: #186a3b;
+  border-left: 4px solid #28b463;
 }

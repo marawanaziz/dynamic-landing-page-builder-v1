@@ -36,6 +36,9 @@ function parseFeatures(featuresString) {
 function parseWorkflowBreakdown(breakdownText) {
   if (!breakdownText) return "";
 
+  // Pre-process: add a newline after each bold label if not already present
+  breakdownText = breakdownText.replace(/(\*\*.*?\*\*:)/g, "$1\n");
+
   // Split into sections by phase or header
   const phaseRegex = /### (.*?)\n([\s\S]*?)(?=### |$)/g;
   let html = "";
@@ -60,9 +63,9 @@ function parseWorkflowBreakdown(breakdownText) {
     if (/Integration Architecture/i.test(title)) {
       html += `<div class="integration-list"><h4>${title}</h4>${content}</div>`;
     } else if (/Success Measurement/i.test(title)) {
-      html += `<div class="success-measurement"><h4>${title}</h4>${content}</div>`;
+      html += `<div class="success-measurement-card"><h4>${title}</h4>${content}</div>`;
     } else if (/ROI Projection/i.test(title)) {
-      html += `<div class="roi-projection"><h4>${title}</h4>${content}</div>`;
+      html += `<div class="roi-projection-card"><h4>${title}</h4>${content}</div>`;
     } else {
       html += `<div class="phase-section"><div class="phase-title">${title}</div>${content}</div>`;
     }
