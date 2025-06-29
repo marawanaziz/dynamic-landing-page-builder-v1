@@ -620,12 +620,34 @@ body {
     font-size: 0.98rem;
   }
   .revenue-impact-card {
-    padding: 4px 6px !important;
-    align-items: flex-start !important;
-    font-size: 0.97rem !important;
+    display: block !important;
     min-width: 0 !important;
     width: 100% !important;
+    height: auto !important;
+    flex: none !important;
+    padding: 2px 4px !important;
+    font-size: 0.97rem !important;
     box-sizing: border-box !important;
+    align-items: flex-start !important;
+    margin-bottom: 4px !important;
+    margin-top: 0 !important;
+    line-height: 1.2 !important;
+  }
+  .integration-list,
+  .success-measurement-card,
+  .roi-projection-card {
+    display: block !important;
+    min-width: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    flex: none !important;
+    padding: 2px 4px !important;
+    font-size: 0.97rem !important;
+    box-sizing: border-box !important;
+    align-items: flex-start !important;
+    margin-bottom: 4px !important;
+    margin-top: 0 !important;
+    line-height: 1.2 !important;
   }
 }
 
