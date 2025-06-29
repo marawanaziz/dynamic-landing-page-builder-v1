@@ -3,6 +3,7 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 const path = require("path");
 const db = require("./db");
+const { runMigrations } = require("./migrate");
 
 dotenv.config();
 
@@ -12,6 +13,18 @@ app.use(express.json());
 
 // Serve static files from the React app
 app.use(express.static(path.join(__dirname, "client/build")));
+
+// Run database migrations on startup
+const initializeDatabase = async () => {
+  try {
+    console.log("🔄 Running database migrations...");
+    await runMigrations();
+    console.log("✅ Database migrations completed");
+  } catch (error) {
+    console.error("❌ Database migration failed:", error);
+    process.exit(1);
+  }
+};
 
 // API endpoint to get landing page data by id
 app.get("/api/landing", async (req, res) => {
@@ -44,6 +57,12 @@ app.post("/api/landing", async (req, res) => {
     loom_url,
     features_list,
     brand_color,
+    workflow_chart,
+    workflow_name,
+    revenue_impact_summary,
+    gtm_challenge_addressed,
+    target_gtm_metrics_improved,
+    in_depth_workflow_breakdown,
   } = req.body;
   if (!landing_page_id) {
     return res.status(400).json({ error: "Missing landing_page_id parameter" });
@@ -56,7 +75,7 @@ app.post("/api/landing", async (req, res) => {
     if (existing.length > 0) {
       // Update existing record
       await db.query(
-        "UPDATE landing_pages SET partner_logo_url = ?, primary_header = ?, subheader = ?, loom_url = ?, features_list = ?, brand_color = ? WHERE landing_page_id = ?",
+        "UPDATE landing_pages SET partner_logo_url = ?, primary_header = ?, subheader = ?, loom_url = ?, features_list = ?, brand_color = ?, workflow_chart = ?, workflow_name = ?, revenue_impact_summary = ?, gtm_challenge_addressed = ?, target_gtm_metrics_improved = ?, in_depth_workflow_breakdown = ? WHERE landing_page_id = ?",
         [
           partner_logo_url,
           primary_header,
@@ -64,6 +83,12 @@ app.post("/api/landing", async (req, res) => {
           loom_url,
           features_list,
           brand_color,
+          workflow_chart,
+          workflow_name,
+          revenue_impact_summary,
+          gtm_challenge_addressed,
+          target_gtm_metrics_improved,
+          in_depth_workflow_breakdown,
           landing_page_id,
         ]
       );
@@ -75,7 +100,7 @@ app.post("/api/landing", async (req, res) => {
     } else {
       // Insert new record
       const [result] = await db.query(
-        "INSERT INTO landing_pages (landing_page_id, partner_logo_url, primary_header, subheader, loom_url, features_list, brand_color) VALUES (?, ?, ?, ?, ?, ?, ?)",
+        "INSERT INTO landing_pages (landing_page_id, partner_logo_url, primary_header, subheader, loom_url, features_list, brand_color, workflow_chart, workflow_name, revenue_impact_summary, gtm_challenge_addressed, target_gtm_metrics_improved, in_depth_workflow_breakdown) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
         [
           landing_page_id,
           partner_logo_url,
@@ -84,6 +109,12 @@ app.post("/api/landing", async (req, res) => {
           loom_url,
           features_list,
           brand_color,
+          workflow_chart,
+          workflow_name,
+          revenue_impact_summary,
+          gtm_challenge_addressed,
+          target_gtm_metrics_improved,
+          in_depth_workflow_breakdown,
         ]
       );
       res.status(201).json({
@@ -105,6 +136,21 @@ app.get("*", (req, res) => {
 });
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+
+// Initialize database and start server
+const startServer = async () => {
+  try {
+    // Run migrations first
+    await initializeDatabase();
+
+    // Start the server
+    app.listen(PORT, () => {
+      console.log(`🚀 Server running on port ${PORT}`);
+    });
+  } catch (error) {
+    console.error("❌ Failed to start server:", error);
+    process.exit(1);
+  }
+};
+
+startServer();

@@ -7,5 +7,11 @@ CREATE TABLE landing_pages (
   loom_url VARCHAR(255),
   features_list TEXT, -- JSON array of strings
   brand_color VARCHAR(32),
+  workflow_chart TEXT, -- Mermaid flowchart data
+  workflow_name VARCHAR(255),
+  revenue_impact_summary TEXT,
+  gtm_challenge_addressed TEXT,
+  target_gtm_metrics_improved TEXT,
+  in_depth_workflow_breakdown TEXT,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 ); 
