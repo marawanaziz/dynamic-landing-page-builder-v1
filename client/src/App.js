@@ -43,6 +43,8 @@ function parseWorkflowBreakdown(breakdownText) {
   const phaseRegex = /### (.*?)\n([\s\S]*?)(?=### |$)/g;
   let html = "";
   let match;
+  // Collect special cards to render later
+  let specialCards = [];
   while ((match = phaseRegex.exec(breakdownText)) !== null) {
     const title = match[1].trim();
     let content = match[2].trim();
@@ -70,7 +72,9 @@ function parseWorkflowBreakdown(breakdownText) {
         : /Success Measurement/i.test(title)
         ? "success-measurement-card"
         : "roi-projection-card";
-      html += `<div class="${cardClass}"><h4>${title}</h4>${list}</div>`;
+      specialCards.push(
+        `<div class="${cardClass}"><h4>${title}</h4>${list}</div>`
+      );
     } else {
       // For phase details, split into lines and render each label/value pair as a row
       let lines = content
@@ -89,6 +93,10 @@ function parseWorkflowBreakdown(breakdownText) {
         .join("");
       html += `<div class="phase-section"><div class="phase-title">${title}</div>${details}</div>`;
     }
+  }
+  // Render the special cards in a horizontal row below the main html
+  if (specialCards.length > 0) {
+    html += `<div class='workflow-cards-row'>${specialCards.join("")}</div>`;
   }
   return html;
 }
