@@ -570,24 +570,24 @@ function WorkflowPage() {
                       </h3>
                       <div className="section-content">
                         <div className="metrics-grid">
-                          {data.target_gtm_metrics_improved &&
-                            data.target_gtm_metrics_improved
-                              .split("\n")
-                              .filter((line) => line.trim())
-                              .map((metric, index) => {
-                                const parts = metric.split("\n");
-                                if (parts.length >= 2) {
-                                  return (
-                                    <div key={index} className="metric-card">
-                                      <div className="metric-value">
-                                        {parts[0]}
-                                      </div>
-                                      <div>{parts[1]}</div>
-                                    </div>
-                                  );
-                                }
-                                return null;
-                              })}
+                          {Array.isArray(data.target_gtm_metrics_improved)
+                            ? data.target_gtm_metrics_improved.map(
+                                (metric, index) => (
+                                  <div key={index} className="metric-card">
+                                    <div className="metric-value">{metric}</div>
+                                  </div>
+                                )
+                              )
+                            : typeof data.target_gtm_metrics_improved ===
+                                "string" &&
+                              data.target_gtm_metrics_improved
+                                .split("\n")
+                                .filter((line) => line.trim())
+                                .map((metric, index) => (
+                                  <div key={index} className="metric-card">
+                                    <div className="metric-value">{metric}</div>
+                                  </div>
+                                ))}
                         </div>
                       </div>
                     </div>

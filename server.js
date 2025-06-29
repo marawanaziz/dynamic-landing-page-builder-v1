@@ -40,7 +40,18 @@ app.get("/api/landing", async (req, res) => {
     if (rows.length === 0) {
       return res.status(404).json({ error: "Landing page not found" });
     }
-    res.json(rows[0]);
+    // Parse target_gtm_metrics_improved as array if possible
+    let row = rows[0];
+    if (typeof row.target_gtm_metrics_improved === "string") {
+      try {
+        row.target_gtm_metrics_improved = JSON.parse(
+          row.target_gtm_metrics_improved
+        );
+      } catch {
+        // fallback: keep as string
+      }
+    }
+    res.json(row);
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Internal server error" });
@@ -49,7 +60,7 @@ app.get("/api/landing", async (req, res) => {
 
 // POST endpoint to create or update landing page data
 app.post("/api/landing", async (req, res) => {
-  const {
+  let {
     landing_page_id,
     partner_logo_url,
     primary_header,
@@ -67,6 +78,12 @@ app.post("/api/landing", async (req, res) => {
   if (!landing_page_id) {
     return res.status(400).json({ error: "Missing landing_page_id parameter" });
   }
+
+  // Convert array to JSON string for storage
+  if (Array.isArray(target_gtm_metrics_improved)) {
+    target_gtm_metrics_improved = JSON.stringify(target_gtm_metrics_improved);
+  }
+
   try {
     const [existing] = await db.query(
       "SELECT id FROM landing_pages WHERE landing_page_id = ?",
