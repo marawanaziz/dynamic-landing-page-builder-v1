@@ -273,7 +273,8 @@ body {
 
 .bottom-section {
   display: grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
   min-height: 600px;
 }
 
@@ -287,6 +288,9 @@ body {
   padding: 35px;
   background: linear-gradient(135deg, #f1f3f4 0%, #e8eaf6 100%);
   overflow-y: auto;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  min-width: 0;
 }
 
 .section-block {
@@ -323,28 +327,35 @@ body {
 }
 
 .phase-section {
-  background: #f8f9fa;
-  padding: 20px;
-  border-radius: 8px;
-  margin: 15px 0;
-  border-left: 3px solid #6c757d;
+  background: #fff;
+  padding: 24px 20px 18px 20px;
+  border-radius: 12px;
+  margin-bottom: 28px;
+  border-left: 4px solid #3498db;
+  box-shadow: 0 2px 12px rgba(52, 152, 219, 0.07);
 }
 
 .phase-title {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #495057;
-  margin-bottom: 12px;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 10px;
 }
 
 .phase-detail {
-  margin: 8px 0;
-  padding-left: 15px;
+  margin: 7px 0 7px 0;
+  padding-left: 0;
+  font-size: 1rem;
+  color: #374151;
+  display: flex;
+  align-items: flex-start;
 }
 
 .phase-detail strong {
-  color: #2c3e50;
+  color: #3498db;
   font-weight: 600;
+  min-width: 110px;
+  display: inline-block;
 }
 
 .metrics-grid {
@@ -372,8 +383,11 @@ body {
   padding: 35px;
   background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  min-width: 0;
 }
 
 .mermaid-container {
@@ -418,6 +432,14 @@ body {
   font-weight: bold;
 }
 
+/* Add spacing for integration, measurement, and ROI sections */
+.integration-list,
+.success-measurement,
+.roi-projection {
+  margin-top: 18px;
+  margin-bottom: 18px;
+}
+
 /* Responsive design for workflow section */
 @media (max-width: 1024px) {
   .top-section {
@@ -426,10 +448,17 @@ body {
 
   .bottom-section {
     grid-template-columns: 1fr;
+    gap: 0;
   }
 
   .workflow-title {
     font-size: 2.2rem;
+  }
+
+  .workflow-detail-section,
+  .diagram-section {
+    border-radius: 0 0 16px 16px;
+    box-shadow: none;
   }
 }
 
@@ -731,4 +760,50 @@ body {
   .calendly-section {
     padding: 60px 0;
   }
+}
+
+.revenue-impact-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.revenue-impact-card {
+  background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+  color: #155724;
+  border-left: 4px solid #28a745;
+  border-radius: 8px;
+  padding: 14px 18px;
+  font-weight: 600;
+  font-size: 1.05rem;
+  box-shadow: 0 2px 8px rgba(40, 167, 69, 0.07);
+  min-width: 180px;
+  flex: 1 1 180px;
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .revenue-impact-grid {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .revenue-impact-card {
+    min-width: 0;
+    width: 100%;
+  }
+}
+
+.gtm-challenge-highlight {
+  background: linear-gradient(135deg, #e3f0fc 0%, #cbe7ff 100%);
+  color: #1a365d;
+  border-left: 4px solid #3498db;
+  border-radius: 8px;
+  padding: 14px 18px;
+  font-weight: 600;
+  font-size: 1.05rem;
+  box-shadow: 0 2px 8px rgba(52, 152, 219, 0.07);
+  margin-top: 8px;
+  margin-bottom: 8px;
 }

@@ -36,28 +36,37 @@ function parseFeatures(featuresString) {
 function parseWorkflowBreakdown(breakdownText) {
   if (!breakdownText) return "";
 
-  // Convert markdown-style headers to HTML
-  let html = breakdownText
-    .replace(
-      /### (.*?)\n/g,
-      '<div class="phase-section"><div class="phase-title">$1</div>'
-    )
-    .replace(
-      /\*\*(.*?)\*\*: (.*?)\n/g,
-      '<div class="phase-detail"><strong>$1:</strong> $2</div>'
-    )
-    .replace(
-      /\*\*(.*?)\*\*: (.*?)$/g,
+  // Split into sections by phase or header
+  const phaseRegex = /### (.*?)\n([\s\S]*?)(?=### |$)/g;
+  let html = "";
+  let match;
+  while ((match = phaseRegex.exec(breakdownText)) !== null) {
+    const title = match[1].trim();
+    let content = match[2].trim();
+
+    // Format Trigger, Process, etc. as bold labels with spacing
+    content = content.replace(
+      /\*\*(.*?)\*\*: ?([^\n]*)/g,
       '<div class="phase-detail"><strong>$1:</strong> $2</div>'
     );
 
-  // Handle lists
-  html = html.replace(/- (.*?)\n/g, "<li>$1</li>");
-  html = html.replace(/(<li>.*?<\/li>)/g, "<ul>$1</ul>");
+    // Format bullet lists
+    content = content.replace(/^- (.*)$/gm, "<li>$1</li>");
+    if (content.includes("<li>")) {
+      content = content.replace(/(<li>.*?<\/li>)/gs, "<ul>$1</ul>");
+    }
 
-  // Close phase sections
-  html = html.replace(/<\/div>\n\n/g, "</div></div>\n\n");
-
+    // Special blocks for Integration, Measurement, ROI
+    if (/Integration Architecture/i.test(title)) {
+      html += `<div class="integration-list"><h4>${title}</h4>${content}</div>`;
+    } else if (/Success Measurement/i.test(title)) {
+      html += `<div class="success-measurement"><h4>${title}</h4>${content}</div>`;
+    } else if (/ROI Projection/i.test(title)) {
+      html += `<div class="roi-projection"><h4>${title}</h4>${content}</div>`;
+    } else {
+      html += `<div class="phase-section"><div class="phase-title">${title}</div>${content}</div>`;
+    }
+  }
   return html;
 }
 
@@ -540,8 +549,25 @@ function WorkflowPage() {
                     <div className="section-block">
                       <h3 className="section-title">Revenue Impact Summary</h3>
                       <div className="section-content">
-                        <div className="revenue-highlight">
-                          {data.revenue_impact_summary}
+                        <div className="revenue-impact-grid">
+                          {Array.isArray(data.revenue_impact_summary)
+                            ? data.revenue_impact_summary.map((item, idx) => (
+                                <div key={idx} className="revenue-impact-card">
+                                  {item.replace(/^Direct impact:\s*/i, "")}
+                                </div>
+                              ))
+                            : typeof data.revenue_impact_summary === "string" &&
+                              data.revenue_impact_summary
+                                .split(/\n|,|;|\./)
+                                .filter((line) => line.trim())
+                                .map((item, idx) => (
+                                  <div
+                                    key={idx}
+                                    className="revenue-impact-card"
+                                  >
+                                    {item.replace(/^Direct impact:\s*/i, "")}
+                                  </div>
+                                ))}
                         </div>
                       </div>
                     </div>
@@ -551,14 +577,16 @@ function WorkflowPage() {
                     <div className="section-block">
                       <h3 className="section-title">GTM Challenge Addressed</h3>
                       <div className="section-content">
-                        <div
-                          dangerouslySetInnerHTML={{
-                            __html: data.gtm_challenge_addressed?.replace(
-                              /\n/g,
-                              "<br/>"
-                            ),
-                          }}
-                        />
+                        <div className="gtm-challenge-highlight">
+                          <div
+                            dangerouslySetInnerHTML={{
+                              __html: data.gtm_challenge_addressed?.replace(
+                                /\n/g,
+                                "<br/>"
+                              ),
+                            }}
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
