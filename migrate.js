@@ -127,9 +127,6 @@ const runMigrations = async () => {
   } catch (error) {
     console.error("❌ Migration failed:", error);
     process.exit(1);
-  } finally {
-    // Close database connection
-    await db.end();
   }
 };
 
