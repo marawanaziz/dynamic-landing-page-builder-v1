@@ -40,13 +40,13 @@ function parseWorkflowBreakdown(
 ) {
   if (!breakdownText) return "";
 
-  // Replace all **Label:** with <strong>Label:</strong>
+  // Convert all **Label:** to <strong>Label:</strong>
   breakdownText = breakdownText.replace(
-    /\*\*(.+?)\*\*:/g,
-    "<strong>$1:</strong>"
+    /\*\*(.+?)\*\*/g,
+    "<strong>$1</strong>"
   );
 
-  // Pre-process: add a newline after each bold label if not already present
+  // Add a newline after each bold label if not already present
   breakdownText = breakdownText.replace(/(<strong>.*?:<\/strong>)/g, "$1\n");
 
   // Split into sections by phase or header
