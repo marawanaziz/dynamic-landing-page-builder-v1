@@ -712,16 +712,27 @@ function WorkflowPage() {
 
                 {/* Render the workflow cards row below the entire workflow section */}
                 {data.in_depth_workflow_breakdown && (
-                  <div
-                    className="workflow-cards-row"
-                    dangerouslySetInnerHTML={{
-                      __html: parseWorkflowBreakdown(
-                        data.in_depth_workflow_breakdown,
-                        false,
-                        true
-                      ),
-                    }}
-                  />
+                  <>
+                    <div
+                      className="workflow-cards-row"
+                      dangerouslySetInnerHTML={{
+                        __html: parseWorkflowBreakdown(
+                          data.in_depth_workflow_breakdown,
+                          false,
+                          true
+                        ),
+                      }}
+                    />
+                    <div style={{ textAlign: "center", marginTop: 16 }}>
+                      <a
+                        href="#calendly"
+                        className="cta-button"
+                        onClick={scrollToCalendly}
+                      >
+                        Schedule Your Strategy Call
+                      </a>
+                    </div>
+                  </>
                 )}
               </div>
             </div>
