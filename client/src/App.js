@@ -39,7 +39,17 @@ function parseWorkflowBreakdown(
   onlySpecialCards = false
 ) {
   if (!breakdownText) return "";
-  breakdownText = breakdownText.replace(/(\*\*.*?\*\*:)/g, "$1\n");
+
+  // Replace all **Label:** with <strong>Label:</strong>
+  breakdownText = breakdownText.replace(
+    /\*\*(.+?)\*\*:/g,
+    "<strong>$1:</strong>"
+  );
+
+  // Pre-process: add a newline after each bold label if not already present
+  breakdownText = breakdownText.replace(/(<strong>.*?:<\/strong>)/g, "$1\n");
+
+  // Split into sections by phase or header
   const phaseRegex = /### (.*?)\n([\s\S]*?)(?=### |$)/g;
   let html = "";
   let match;
@@ -79,9 +89,10 @@ function parseWorkflowBreakdown(
         .filter((l) => l.length > 0);
       let details = lines
         .map((line) => {
-          const match = line.match(/^\*\*(.*?)\*\*:\s*(.*)$/);
+          // If line starts with <strong>...</strong>, split into label and value
+          const match = line.match(/^<strong>(.+?:)<\/strong>\s*(.*)$/);
           if (match) {
-            return `<div class='phase-detail'><span class='phase-label'>${match[1]}:</span> <span class='phase-value'>${match[2]}</span></div>`;
+            return `<div class='phase-detail'><span class='phase-label'>${match[1]}</span> <span class='phase-value'>${match[2]}</span></div>`;
           } else {
             return `<div class='phase-detail phase-freeform'>${line}</div>`;
           }

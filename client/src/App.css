@@ -515,21 +515,43 @@ body {
 @media (max-width: 1024px) {
   .top-section {
     grid-template-columns: 1fr;
+    gap: 16px;
+    width: 100%;
+    box-sizing: border-box;
   }
-
   .bottom-section {
     grid-template-columns: 1fr;
     gap: 0;
+    width: 100%;
+    box-sizing: border-box;
   }
-
-  .workflow-title {
-    font-size: 2.2rem;
-  }
-
   .workflow-detail-section,
   .diagram-section {
     border-radius: 0 0 16px 16px;
     box-shadow: none;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 16px 8px;
+  }
+  .workflow-cards-row {
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 20px;
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding: 0 4px;
+  }
+  .workflow-cards-row > * {
+    min-width: 0;
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .workflow-title {
+    font-size: 2.2rem;
   }
 }
 
@@ -550,6 +572,36 @@ body {
 
   .bottom-section {
     grid-template-columns: 1fr;
+  }
+
+  .workflow-header {
+    padding: 18px 6px;
+  }
+  .workflow-title {
+    font-size: 1.5rem;
+  }
+  .workflow-subtitle {
+    font-size: 1.1rem;
+  }
+  .section-block,
+  .phase-section,
+  .integration-list,
+  .success-measurement-card,
+  .roi-projection-card {
+    padding: 12px 8px;
+    font-size: 0.98rem;
+    box-sizing: border-box;
+  }
+  .phase-title {
+    font-size: 1.01rem;
+  }
+  .phase-label,
+  .phase-value {
+    font-size: 0.98rem;
+  }
+  .revenue-impact-card {
+    font-size: 0.98rem;
+    padding: 10px 8px;
   }
 }
 
@@ -887,8 +939,10 @@ body {
   margin-top: 40px;
   margin-bottom: 0;
   justify-content: center;
-  width: 100%;
-  max-width: 100%;
+  width: 98%;
+  max-width: 98%;
+  margin-left: 1%;
+  margin-right: 1%;
 }
 .workflow-cards-row > * {
   flex: 1 1 320px;
@@ -900,6 +954,10 @@ body {
     flex-direction: column;
     gap: 16px;
     margin-top: 20px;
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+    max-width: 100%;
   }
   .workflow-cards-row > * {
     min-width: 0;
