@@ -614,7 +614,8 @@ function WorkflowPage() {
                               })
                             : typeof data.revenue_impact_summary === "string" &&
                               data.revenue_impact_summary
-                                .split(/\n|,|;|\./)
+                                // Only split on newlines, semicolons, or commas, NOT periods
+                                .split(/\n|;|,/)
                                 .filter((line) => line.trim())
                                 .map((item, idx) => {
                                   const clean = item.replace(
