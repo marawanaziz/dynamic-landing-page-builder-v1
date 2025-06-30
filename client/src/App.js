@@ -4,6 +4,8 @@ import {
   Route,
   Routes,
   useParams,
+  useLocation,
+  useNavigate,
 } from "react-router-dom";
 import "./App.css";
 
@@ -915,9 +917,23 @@ function WorkflowPage() {
   );
 }
 
+function TrailingDotRedirect() {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (location.pathname.match(/\.$/)) {
+      navigate(location.pathname.replace(/\.$/, ""), { replace: true });
+    }
+  }, [location, navigate]);
+
+  return null;
+}
+
 function App() {
   return (
     <Router>
+      <TrailingDotRedirect />
       <Routes>
         <Route path="/landing/:id" element={<LandingPage />} />
         <Route path="/workflow/:id" element={<WorkflowPage />} />
