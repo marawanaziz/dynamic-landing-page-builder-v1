@@ -115,8 +115,10 @@ function parseWorkflowBreakdown(
 }
 
 function useDarkLogoFlag() {
-  // Checks if the URL contains ?dark or &dark
-  return /[?&]dark(=|&|$)/.test(window.location.search);
+  // Checks if the URL contains ?dark or &dark, even if a trailing period is present
+  let search = window.location.search;
+  if (search.endsWith(".")) search = search.slice(0, -1);
+  return /[?&]dark(=|&|$)/.test(search);
 }
 
 function LandingPage() {
