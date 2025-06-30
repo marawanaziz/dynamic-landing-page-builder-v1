@@ -75,8 +75,8 @@ body {
 }
 
 .logo.dark {
-  background: rgba(255, 255, 255, 0.95);
-  border: 1px solid rgba(226, 232, 240, 0.5);
+  background: #111;
+  border: 1px solid #222;
 }
 
 /* CSS Custom Properties for Brand Colors */
