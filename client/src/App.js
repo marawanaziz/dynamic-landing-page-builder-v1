@@ -143,8 +143,9 @@ function LandingPage() {
       setLoading(false);
       return;
     }
-    // Use the current origin for the API request
-    const apiUrl = `${window.location.origin}/api/landing?id=${id}`;
+    // Clean the id for the API call only
+    const cleanId = id.replace(/\.$/, "");
+    const apiUrl = `${window.location.origin}/api/landing?id=${cleanId}`;
     fetch(apiUrl)
       .then((res) => {
         if (!res.ok) throw new Error("Landing page not found");
@@ -471,8 +472,9 @@ function WorkflowPage() {
       setLoading(false);
       return;
     }
-    // Use the current origin for the API request
-    const apiUrl = `${window.location.origin}/api/landing?id=${id}`;
+    // Clean the id for the API call only
+    const cleanId = id.replace(/\.$/, "");
+    const apiUrl = `${window.location.origin}/api/landing?id=${cleanId}`;
     fetch(apiUrl)
       .then((res) => {
         if (!res.ok) throw new Error("Workflow page not found");
