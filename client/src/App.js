@@ -118,7 +118,7 @@ function useDarkLogoFlag() {
   // Checks if the URL contains ?dark or &dark, even if a trailing period is present
   let search = window.location.search;
   if (search.endsWith(".")) search = search.slice(0, -1);
-  return /[?&]dark(=|&|$)/.test(search);
+  return /[?&]dark(=|&|$)/.test(search) || /[?&]darkmode(=|&|$)/.test(search);
 }
 
 function LandingPage() {
@@ -222,7 +222,7 @@ function LandingPage() {
           <div className="logo-container">
             <div className={`logo${darkLogo ? " dark" : ""}`}>
               <img
-                src={darkLogo ? MAIN_LOGO_WHITE_URL : MAIN_LOGO_URL}
+                src={darkLogo ? MAIN_LOGO_URL : MAIN_LOGO_WHITE_URL}
                 alt="SixtySixten Logo"
                 style={{ maxWidth: "100%", maxHeight: "100%" }}
               />
@@ -578,7 +578,7 @@ function WorkflowPage() {
           <div className="logo-container">
             <div className={`logo${darkLogo ? " dark" : ""}`}>
               <img
-                src={darkLogo ? MAIN_LOGO_WHITE_URL : MAIN_LOGO_URL}
+                src={darkLogo ? MAIN_LOGO_URL : MAIN_LOGO_WHITE_URL}
                 alt="SixtySixten Logo"
                 style={{ maxWidth: "100%", maxHeight: "100%" }}
               />
