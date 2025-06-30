@@ -425,6 +425,26 @@ function capitalizeFirstAlpha(str) {
   return str.replace(/([a-zA-Z])/, (m) => m.toUpperCase());
 }
 
+// Utility function to strip trailing period from URLs
+function cleanUrl(url) {
+  return url ? url.replace(/(https?:\/\/[\w\.-\/]+)\./g, "$1") : url;
+}
+
+// Global clipboard patch to clean URLs with trailing periods
+if (typeof window !== "undefined") {
+  document.addEventListener("copy", function (e) {
+    const selection = window.getSelection();
+    if (!selection) return;
+    const text = selection.toString();
+    // Replace URLs ending with a period
+    const cleaned = text.replace(/(https?:\/\/[\w\.-\/]+)\./g, "$1");
+    if (cleaned !== text) {
+      e.preventDefault();
+      e.clipboardData.setData("text/plain", cleaned);
+    }
+  });
+}
+
 function WorkflowPage() {
   const { id } = useParams();
   const [data, setData] = useState(null);
