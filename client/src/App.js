@@ -222,7 +222,7 @@ function LandingPage() {
           <div className="logo-container">
             <div className={`logo${darkLogo ? " dark" : ""}`}>
               <img
-                src={darkLogo ? MAIN_LOGO_URL : MAIN_LOGO_WHITE_URL}
+                src={darkLogo ? MAIN_LOGO_WHITE_URL : MAIN_LOGO_URL}
                 alt="SixtySixten Logo"
                 style={{ maxWidth: "100%", maxHeight: "100%" }}
               />
@@ -578,7 +578,7 @@ function WorkflowPage() {
           <div className="logo-container">
             <div className={`logo${darkLogo ? " dark" : ""}`}>
               <img
-                src={darkLogo ? MAIN_LOGO_URL : MAIN_LOGO_WHITE_URL}
+                src={darkLogo ? MAIN_LOGO_WHITE_URL : MAIN_LOGO_URL}
                 alt="SixtySixten Logo"
                 style={{ maxWidth: "100%", maxHeight: "100%" }}
               />
