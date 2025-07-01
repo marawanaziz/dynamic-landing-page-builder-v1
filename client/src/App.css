@@ -109,7 +109,7 @@ body {
 /* Hero section */
 .hero {
   text-align: center;
-  padding: 60px 0 0;
+  padding: 40px 0 0;
   animation: fadeInUp 1s ease-out 0.3s both;
 }
 
@@ -200,7 +200,6 @@ body {
   box-shadow: 0 8px 32px var(--brand-color-light);
   position: relative;
   overflow: hidden;
-  margin-bottom: 40px;
   border: none;
   cursor: pointer;
 }
@@ -978,7 +977,7 @@ body {
   }
 
   .hero {
-    padding: 40px 0 30px;
+    padding: 40px 0 0;
   }
 
   .trusted-by-section {
