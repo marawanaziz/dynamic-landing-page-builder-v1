@@ -36,6 +36,24 @@ body {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.navbar-cta {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-button {
+  margin-bottom: 0;
+  padding: 12px 24px;
+  font-size: 0.9rem;
+}
+
 .logo-container {
   display: flex;
   justify-content: center;
@@ -113,6 +131,60 @@ body {
   margin-right: auto;
   color: #1e293b;
   font-weight: 700;
+}
+
+/* Trusted by section */
+.trusted-by-section {
+  text-align: center;
+  padding: 30px 0;
+  background: rgba(255, 255, 255, 0.5);
+  border-top: 1px solid rgba(226, 232, 240, 0.3);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.3);
+  animation: fadeInUp 1s ease-out 0.4s both;
+}
+
+.trusted-by-text {
+  font-size: 0.9rem;
+  color: #64748b;
+  font-weight: 500;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.trusted-logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.trusted-logo {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.trusted-logo:hover {
+  opacity: 1;
+}
+
+.trusted-logo img {
+  max-height: 100%;
+  max-width: 120px;
+  object-fit: contain;
+  filter: grayscale(100%);
+  transition: filter 0.3s ease;
+}
+
+.trusted-logo:hover img {
+  filter: grayscale(0%);
 }
 
 /* CTA Button - Uses brand color */
@@ -541,8 +613,6 @@ body {
     margin-right: 0;
     width: 100%;
     max-width: 100%;
-    box-sizing: border-box;
-    padding: 0 4px;
   }
   .workflow-cards-row > * {
     min-width: 0;
@@ -571,7 +641,7 @@ body {
   }
 
   .bottom-section {
-    grid-template-columns: 1fr;
+    grid-section: 1fr;
   }
 
   .workflow-header {
@@ -884,6 +954,20 @@ body {
     padding: 0 15px;
   }
 
+  .navbar {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .navbar-cta {
+    order: -1;
+  }
+
+  .navbar-button {
+    padding: 10px 20px;
+    font-size: 0.85rem;
+  }
+
   .logo-container {
     gap: 20px;
   }
@@ -896,6 +980,27 @@ body {
 
   .hero {
     padding: 40px 0 30px;
+  }
+
+  .trusted-by-section {
+    padding: 20px 0;
+  }
+
+  .trusted-by-text {
+    font-size: 0.8rem;
+    margin-bottom: 15px;
+  }
+
+  .trusted-logos {
+    gap: 20px;
+  }
+
+  .trusted-logo {
+    height: 30px;
+  }
+
+  .trusted-logo img {
+    max-width: 80px;
   }
 
   .video-section {

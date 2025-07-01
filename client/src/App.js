@@ -15,6 +15,14 @@ const MAIN_LOGO_URL =
 const MAIN_LOGO_WHITE_URL =
   "https://sixtysixten.com/wp-content/uploads/2025/06/SSTLOGO-White-scaled.png";
 
+// Trusted by company logos
+const TRUSTED_LOGOS = [
+  "https://sixtysixten.com/wp-content/uploads/2023/04/logo-trused1.webp",
+  "https://sixtysixten.com/wp-content/uploads/2023/04/logo-trused2.webp",
+  "https://sixtysixten.com/wp-content/uploads/2023/04/logo-trused3.webp",
+  "https://sixtysixten.com/wp-content/uploads/2023/04/logo-trused4.webp",
+];
+
 function getLoomEmbedUrl(url) {
   if (!url) return "";
   // If it's already an embed URL, return as is
@@ -219,23 +227,34 @@ function LandingPage() {
       {/* Header with logos */}
       <header className="header">
         <div className="container">
-          <div className="logo-container">
-            <div className={`logo${darkLogo ? " dark" : ""}`}>
-              <img
-                src={darkLogo ? MAIN_LOGO_WHITE_URL : MAIN_LOGO_URL}
-                alt="SixtySixten Logo"
-                style={{ maxWidth: "100%", maxHeight: "100%" }}
-              />
-            </div>
-            {data.partner_logo_url && (
+          <div className="navbar">
+            <div className="logo-container">
               <div className={`logo${darkLogo ? " dark" : ""}`}>
                 <img
-                  src={data.partner_logo_url}
-                  alt="Partner Logo"
+                  src={darkLogo ? MAIN_LOGO_WHITE_URL : MAIN_LOGO_URL}
+                  alt="SixtySixten Logo"
                   style={{ maxWidth: "100%", maxHeight: "100%" }}
                 />
               </div>
-            )}
+              {data.partner_logo_url && (
+                <div className={`logo${darkLogo ? " dark" : ""}`}>
+                  <img
+                    src={data.partner_logo_url}
+                    alt="Partner Logo"
+                    style={{ maxWidth: "100%", maxHeight: "100%" }}
+                  />
+                </div>
+              )}
+            </div>
+            <div className="navbar-cta">
+              <a
+                href="#calendly"
+                className="cta-button navbar-button"
+                onClick={scrollToCalendly}
+              >
+                Schedule Your Strategy Call
+              </a>
+            </div>
           </div>
         </div>
       </header>
@@ -245,9 +264,22 @@ function LandingPage() {
         <div className="container">
           <h1>{data.primary_header}</h1>
           <p>{data.subheader}</p>
-          <a href="#calendly" className="cta-button" onClick={scrollToCalendly}>
-            Schedule Your Strategy Call
-          </a>
+        </div>
+      </section>
+
+      {/* Trusted by section */}
+      <section className="trusted-by-section">
+        <div className="container">
+          <p className="trusted-by-text">
+            Trusted by more than 100+ industry leaders company worldwide
+          </p>
+          <div className="trusted-logos">
+            {TRUSTED_LOGOS.map((logo, index) => (
+              <div key={index} className="trusted-logo">
+                <img src={logo} alt={`Trusted Company ${index + 1}`} />
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -265,6 +297,15 @@ function LandingPage() {
                   allowFullScreen
                 ></iframe>
               </div>
+            </div>
+            <div style={{ textAlign: "center", marginTop: 40 }}>
+              <a
+                href="#calendly"
+                className="cta-button"
+                onClick={scrollToCalendly}
+              >
+                Schedule Your Strategy Call
+              </a>
             </div>
           </div>
         </section>
@@ -575,23 +616,34 @@ function WorkflowPage() {
       {/* Header with logos */}
       <header className="header">
         <div className="container">
-          <div className="logo-container">
-            <div className={`logo${darkLogo ? " dark" : ""}`}>
-              <img
-                src={darkLogo ? MAIN_LOGO_WHITE_URL : MAIN_LOGO_URL}
-                alt="SixtySixten Logo"
-                style={{ maxWidth: "100%", maxHeight: "100%" }}
-              />
-            </div>
-            {data.partner_logo_url && (
+          <div className="navbar">
+            <div className="logo-container">
               <div className={`logo${darkLogo ? " dark" : ""}`}>
                 <img
-                  src={data.partner_logo_url}
-                  alt="Partner Logo"
+                  src={darkLogo ? MAIN_LOGO_WHITE_URL : MAIN_LOGO_URL}
+                  alt="SixtySixten Logo"
                   style={{ maxWidth: "100%", maxHeight: "100%" }}
                 />
               </div>
-            )}
+              {data.partner_logo_url && (
+                <div className={`logo${darkLogo ? " dark" : ""}`}>
+                  <img
+                    src={data.partner_logo_url}
+                    alt="Partner Logo"
+                    style={{ maxWidth: "100%", maxHeight: "100%" }}
+                  />
+                </div>
+              )}
+            </div>
+            <div className="navbar-cta">
+              <a
+                href="#calendly"
+                className="cta-button navbar-button"
+                onClick={scrollToCalendly}
+              >
+                Schedule Your Strategy Call
+              </a>
+            </div>
           </div>
         </div>
       </header>
@@ -601,9 +653,22 @@ function WorkflowPage() {
         <div className="container">
           <h1>{data.primary_header}</h1>
           <p>{data.subheader}</p>
-          <a href="#calendly" className="cta-button" onClick={scrollToCalendly}>
-            Schedule Your Strategy Call
-          </a>
+        </div>
+      </section>
+
+      {/* Trusted by section */}
+      <section className="trusted-by-section">
+        <div className="container">
+          <p className="trusted-by-text">
+            Trusted by more than 100+ industry leaders company worldwide
+          </p>
+          <div className="trusted-logos">
+            {TRUSTED_LOGOS.map((logo, index) => (
+              <div key={index} className="trusted-logo">
+                <img src={logo} alt={`Trusted Company ${index + 1}`} />
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -762,6 +827,15 @@ function WorkflowPage() {
                   </>
                 )}
               </div>
+            </div>
+            <div style={{ textAlign: "center", marginTop: 40 }}>
+              <a
+                href="#calendly"
+                className="cta-button"
+                onClick={scrollToCalendly}
+              >
+                Schedule Your Strategy Call
+              </a>
             </div>
           </div>
         </section>
