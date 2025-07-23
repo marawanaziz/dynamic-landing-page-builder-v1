@@ -240,13 +240,6 @@ body {
   margin-bottom: 40px;
 }
 
-/* Mobile responsive styles for video section */
-@media (max-width: 768px) {
-  .video-section {
-    margin-top: 20px;
-  }
-}
-
 .video-container {
   position: relative;
   max-width: 800px;
@@ -1014,7 +1007,7 @@ body {
   }
 
   .video-section {
-    margin: 0 0 40px;
+    margin-top: 20px;
   }
 
   .help-grid {
