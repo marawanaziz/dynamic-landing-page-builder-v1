@@ -1135,3 +1135,95 @@ body {
     max-width: 100%;
   }
 }
+
+/* Video Card Component Styles */
+.video-card {
+  max-width: 1200px;
+  margin: 60px auto;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  min-height: 400px;
+}
+
+.video-card .video-section {
+  flex: 1;
+  background: #000;
+  position: relative;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.video-card .content-section {
+  flex: 1;
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.video-card .content-header {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2c2c2c;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  font-family: "Arial", sans-serif;
+}
+
+.video-card .content-subheader {
+  font-size: 1.2rem;
+  color: #666;
+  line-height: 1.6;
+  font-weight: 400;
+  font-family: "Arial", sans-serif;
+}
+
+/* Mobile Responsive Styles for Video Card */
+@media (max-width: 768px) {
+  .video-card {
+    flex-direction: column;
+    margin: 40px 20px;
+    max-width: none;
+  }
+
+  .video-card .video-section {
+    height: 250px;
+  }
+
+  .video-card .content-section {
+    padding: 40px 30px;
+  }
+
+  .video-card .content-header {
+    font-size: 2rem;
+  }
+
+  .video-card .content-subheader {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .video-card {
+    margin: 30px 15px;
+  }
+
+  .video-card .content-section {
+    padding: 30px 20px;
+  }
+
+  .video-card .content-header {
+    font-size: 1.8rem;
+  }
+
+  .video-card .content-subheader {
+    font-size: 1rem;
+  }
+}
