@@ -26,7 +26,7 @@ const VideoCard = () => (
         </p>
       </div>
     </div>
-    <div style={{ textAlign: "center", marginTop: 40, marginBottom: 40 }}>
+    <div style={{ textAlign: "center", marginTop: 40, marginBottom: "40px" }}>
       <a href="#calendly" className="cta-button">
         Schedule Your Strategy Call
       </a>

@@ -319,7 +319,6 @@ function LandingPage() {
             style={{
               textAlign: "center",
               fontSize: "clamp(2rem, 5vw, 3rem)",
-              marginBottom: 60,
               fontWeight: 700,
               color: "#1e293b",
             }}
