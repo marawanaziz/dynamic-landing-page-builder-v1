@@ -235,6 +235,11 @@ body {
   animation: fadeInUp 1s ease-out 0.6s both;
 }
 
+/* Ensure CTA button in video section has proper spacing */
+.video-section .cta-button {
+  margin-bottom: 40px;
+}
+
 .video-container {
   position: relative;
   max-width: 800px;
