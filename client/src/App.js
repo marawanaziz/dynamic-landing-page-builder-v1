@@ -23,6 +23,9 @@ const TRUSTED_LOGOS = [
   "https://sixtysixten.com/wp-content/uploads/2023/04/logo-trused4.webp",
 ];
 
+// Add import for VideoCard
+import VideoCard from "./VideoCard";
+
 function getLoomEmbedUrl(url) {
   if (!url) return "";
   // If it's already an embed URL, return as is
@@ -283,33 +286,23 @@ function LandingPage() {
         </div>
       </section>
 
-      {/* Video section */}
-      {data.loom_url && (
-        <section className="video-section">
-          <div className="container">
-            <div className="video-container">
-              <div className="loom-embed">
-                <iframe
-                  src={getLoomEmbedUrl(data.loom_url)}
-                  frameBorder="0"
-                  webkitallowfullscreen="true"
-                  mozallowfullscreen="true"
-                  allowFullScreen
-                ></iframe>
-              </div>
-            </div>
-            <div style={{ textAlign: "center", marginTop: 40 }}>
-              <a
-                href="#calendly"
-                className="cta-button"
-                onClick={scrollToCalendly}
-              >
-                Schedule Your Strategy Call
-              </a>
-            </div>
-          </div>
-        </section>
-      )}
+      {/* Client Testimonial section */}
+      <section className="testimonial-section">
+        <div className="container">
+          <h2
+            style={{
+              textAlign: "center",
+              fontSize: "clamp(2rem, 5vw, 3rem)",
+              marginBottom: 60,
+              fontWeight: 700,
+              color: "#1e293b",
+            }}
+          >
+            Client Testimonial
+          </h2>
+          <VideoCard />
+        </div>
+      </section>
 
       {/* How We Help section */}
       <section className="help-section">

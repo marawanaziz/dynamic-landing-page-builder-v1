@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Video Card Component</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .video-card {
+        max-width: 1200px;
+        margin: 60px auto;
+        background: #fff;
+        border-radius: 16px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        gap: 0;
+        min-height: 400px;
+      }
+
+      .video-section {
+        flex: 1;
+        background: #000;
+        position: relative;
+        height: 400px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .youtube-embed {
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+
+      .content-section {
+        flex: 1;
+        padding: 60px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .content-header {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #2c2c2c;
+        line-height: 1.2;
+        margin-bottom: 20px;
+        font-family: "Arial", sans-serif;
+      }
+
+      .content-subheader {
+        font-size: 1.2rem;
+        color: #666;
+        line-height: 1.6;
+        font-weight: 400;
+        font-family: "Arial", sans-serif;
+      }
+
+      @media (max-width: 768px) {
+        .video-card {
+          flex-direction: column;
+          margin: 40px 20px;
+          max-width: none;
+        }
+
+        .video-section {
+          height: 250px;
+        }
+
+        .content-section {
+          padding: 40px 30px;
+        }
+
+        .content-header {
+          font-size: 2rem;
+        }
+
+        .content-subheader {
+          font-size: 1.1rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .content-section {
+          padding: 30px 20px;
+        }
+
+        .content-header {
+          font-size: 1.8rem;
+        }
+
+        .content-subheader {
+          font-size: 1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="video-card">
+      <div class="video-section">
+        <iframe
+          class="youtube-embed"
+          src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+        >
+        </iframe>
+      </div>
+
+      <div class="content-section">
+        <h2 class="content-header">
+          How Outreachify Scaled to 100+ Campaigns Without Hiring Additional
+          Staff
+        </h2>
+        <p class="content-subheader">
+          See how Harsh saved 16 hours per week, replaced a $3,000/month data
+          analyst, and gained the confidence to take on more clients using our
+          MCP solution. Rated 10/10 and recommended to every B2B agency.
+        </p>
+      </div>
+    </div>
+
+    <script>
+      // YouTube embed handles video controls automatically
+      // No additional JavaScript needed for basic functionality
+    </script>
+  </body>
+</html>
