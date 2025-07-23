@@ -284,6 +284,34 @@ function LandingPage() {
         </div>
       </section>
 
+      {/* Loom Video section (restored) */}
+      {data.loom_url && (
+        <section className="video-section">
+          <div className="container">
+            <div className="video-container">
+              <div className="loom-embed">
+                <iframe
+                  src={getLoomEmbedUrl(data.loom_url)}
+                  frameBorder="0"
+                  webkitallowfullscreen="true"
+                  mozallowfullscreen="true"
+                  allowFullScreen
+                ></iframe>
+              </div>
+            </div>
+            <div style={{ textAlign: "center", marginTop: 40 }}>
+              <a
+                href="#calendly"
+                className="cta-button"
+                onClick={scrollToCalendly}
+              >
+                Schedule Your Strategy Call
+              </a>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Client Testimonial section */}
       <section className="testimonial-section">
         <div className="container">
