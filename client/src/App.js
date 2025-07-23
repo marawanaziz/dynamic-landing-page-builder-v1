@@ -8,6 +8,7 @@ import {
   useNavigate,
 } from "react-router-dom";
 import "./App.css";
+import VideoCard from "./VideoCard";
 
 // Logo URLs
 const MAIN_LOGO_URL =
@@ -22,9 +23,6 @@ const TRUSTED_LOGOS = [
   "https://sixtysixten.com/wp-content/uploads/2023/04/logo-trused3.webp",
   "https://sixtysixten.com/wp-content/uploads/2023/04/logo-trused4.webp",
 ];
-
-// Add import for VideoCard
-import VideoCard from "./VideoCard";
 
 function getLoomEmbedUrl(url) {
   if (!url) return "";
