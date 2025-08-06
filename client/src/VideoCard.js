@@ -3,6 +3,25 @@ import React from "react";
 const VideoCard = () => (
   <>
     <div className="video-card">
+      <div
+        className="banner-section"
+        style={{
+          backgroundColor: "#f8f9fa",
+          border: "1px solid #e9ecef",
+          borderRadius: "8px",
+          padding: "16px",
+          marginBottom: "20px",
+          textAlign: "center",
+          fontSize: "14px",
+          lineHeight: "1.5",
+          color: "#495057",
+        }}
+      >
+        As someone looking in from the outside, this workflow may not perfectly
+        match your department's specific challenges, and that's completely fine.
+        The real value lies in taking these core principles and adapting them to
+        solve whatever problems you're actually facing right now.
+      </div>
       <div className="video-section">
         <iframe
           className="youtube-embed"
