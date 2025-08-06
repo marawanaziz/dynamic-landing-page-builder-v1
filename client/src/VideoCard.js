@@ -14,7 +14,7 @@ const VideoCard = () => (
           textAlign: "center",
           fontSize: "14px",
           lineHeight: "1.5",
-          color: "#495057",
+          color: "#000000",
         }}
       >
         As someone looking in from the outside, this workflow may not perfectly
