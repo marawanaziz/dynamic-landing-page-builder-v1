@@ -300,11 +300,12 @@ function LandingPage() {
                   fontSize: "14px",
                   lineHeight: "1.5",
                   color: "#000000",
+                  fontWeight: "bold",
                 }}
               >
-                💰 Money Back Guarantee: If you don't see measurable improvement
-                in qualified pipeline generation within 60 days, we'll refund
-                the implementation investment
+                💰 Money Back Guarantee 💰 <br /> If you don't see measurable
+                improvement in qualified pipeline generation within 60 days,
+                we'll refund the implementation investment.
               </div>
               <div className="loom-embed">
                 <iframe
