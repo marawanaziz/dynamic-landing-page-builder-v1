@@ -302,11 +302,9 @@ function LandingPage() {
                   color: "#000000",
                 }}
               >
-                As someone looking in from the outside, this workflow may not
-                perfectly match your department's specific challenges, and
-                that's completely fine. The real value lies in taking these core
-                principles and adapting them to solve whatever problems you're
-                actually facing right now.
+                💰 Money Back Guarantee: If you don't see measurable improvement
+                in qualified pipeline generation within 60 days, we'll refund
+                the implementation investment
               </div>
               <div className="loom-embed">
                 <iframe
